@@ -1,7 +1,7 @@
 
 # Scripts -----------------------------------------------------------------------
 
-source("code/auxiliar.R")
+source("1.preliminary-calculations/auxiliar.R")
 
 # Config ------------------------------------------------------------------------
 
@@ -78,7 +78,7 @@ rownames(sizeRatios) = c(rep("sp0", length(angles.sp0)),
                          rep("sp8", length(angles.sp8)))
 sizeRatios[,1] = round(sizeRatios[,1], 8)
 
-write.csv(sizeRatios, "1.preliminary-calculations/sizeRatios.csv")
+write.csv(sizeRatios, "1.preliminary-calculations/csv/sizeRatios.csv")
 
 
 # 4.   F3: Predation size threshold ---------------------------------------------
@@ -109,7 +109,7 @@ rownames(sizeThreshold) = c("s0_frac", "s1_frac", "s2_frac",
 
 sizeThreshold[,1] = round(sizeThreshold[,1], 8)
 
-write.csv(sizeThreshold, "1.preliminary-calculations/sizeThreshold.csv")
+write.csv(sizeThreshold, "1.preliminary-calculations/csv/sizeThreshold.csv")
 
 # 6.   F4: von Bertalanffy threshold --------------------------------------------
 
@@ -131,19 +131,19 @@ rownames(vbThreshold) = paste0("sp", c(0:8))
 
 vbThreshold[,1] = round(vbThreshold[,1], 8)
 
-write.csv(vbThreshold, "1.preliminary-calculations/vbThreshold.csv")
+write.csv(vbThreshold, "1.preliminary-calculations/csv/vbThreshold.csv")
 
 # 11.  Larval mortality rate: no parametrization ---------------------------------
 
-larvaMortality.sp0 = read.csv(file = "osmose-hum_v3/input/larval/larval_mortality-anchovy.csv"    , header = TRUE, sep = ";")
-larvaMortality.sp1 = read.csv(file = "osmose-hum_v3/input/larval/larval_mortality-hake.csv"       , header = TRUE, sep = ";")
-larvaMortality.sp2 = read.csv(file = "osmose-hum_v3/input/larval/larval_mortality-sardine.csv"    , header = TRUE, sep = ";")
-larvaMortality.sp3 = read.csv(file = "osmose-hum_v3/input/larval/larval_mortality-jurel.csv"      , header = TRUE, sep = ";")
-larvaMortality.sp4 = read.csv(file = "osmose-hum_v3/input/larval/larval_mortality-caballa.csv"    , header = TRUE, sep = ";")
-larvaMortality.sp5 = read.csv(file = "osmose-hum_v3/input/larval/larval_mortality-meso.csv"       , header = TRUE, sep = ";")
-larvaMortality.sp6 = read.csv(file = "osmose-hum_v3/input/larval/larval_mortality-munida.csv"     , header = TRUE, sep = ";")
-larvaMortality.sp7 = read.csv(file = "osmose-hum_v3/input/larval/larval_mortality-pota.csv"       , header = TRUE, sep = ";")
-larvaMortality.sp8 = read.csv(file = "osmose-hum_v3/input/larval/larval_mortality-euphausidos.csv", header = TRUE, sep = ";")
+larvaMortality.sp0 = read.csv(file = "config/larval/larval_mortality-anchovy.csv"    , header = TRUE, sep = ";")
+larvaMortality.sp1 = read.csv(file = "config/larval/larval_mortality-hake.csv"       , header = TRUE, sep = ";")
+larvaMortality.sp2 = read.csv(file = "config/larval/larval_mortality-sardine.csv"    , header = TRUE, sep = ";")
+larvaMortality.sp3 = read.csv(file = "config/larval/larval_mortality-jurel.csv"      , header = TRUE, sep = ";")
+larvaMortality.sp4 = read.csv(file = "config/larval/larval_mortality-caballa.csv"    , header = TRUE, sep = ";")
+larvaMortality.sp5 = read.csv(file = "config/larval/larval_mortality-meso.csv"       , header = TRUE, sep = ";")
+larvaMortality.sp6 = read.csv(file = "config/larval/larval_mortality-munida.csv"     , header = TRUE, sep = ";")
+larvaMortality.sp7 = read.csv(file = "config/larval/larval_mortality-pota.csv"       , header = TRUE, sep = ";")
+larvaMortality.sp8 = read.csv(file = "config/larval/larval_mortality-euphausidos.csv", header = TRUE, sep = ";")
 
 larvaMortality.sp0 = larvaMortality.sp0$x
 larvaMortality.sp1 = larvaMortality.sp1$x
@@ -180,7 +180,7 @@ larvalMortality = matrix(c(Lx_sp0, Lx_sp1, Lx_sp2,
 
 rownames(larvalMortality) = paste0("sp", c(0:8))
 
-write.csv(larvalMortality, "1.preliminary-calculations/larvalMortality.csv")  
+write.csv(larvalMortality, "1.preliminary-calculations/csv/larvalMortality.csv")  
   
 # 14.  L0 -----------------------------------------------------------------------
 
@@ -214,7 +214,7 @@ rownames(l0) = paste0("sp", c(0:8))
 
 l0[,1] = round(l0[,1], 8)
 
-write.csv(l0, "1.preliminary-calculations/l0.csv")
+write.csv(l0, "1.preliminary-calculations/csv/l0.csv")
 
 # 16.  Linf (von bertalanffy)                       :  --------------------------
 
@@ -236,7 +236,7 @@ rownames(lx) = paste0("sp", c(0:8))
 
 lx[,1] = round(lx[,1], 8)
 
-write.csv(lx, "1.preliminary-calculations/lx.csv")
+write.csv(lx, "1.preliminary-calculations/csv/lx.csv")
 
 # 17.  F5: Size at maturity -----------------------------------------------------
 
@@ -268,4 +268,4 @@ rownames(smat) = paste0("sp", c(0:8))
 
 smat[,1] = round(smat[,1], 8)
 
-write.csv(l0, "1.preliminary-calculations/smat.csv")
+write.csv(l0, "1.preliminary-calculations/csv/smat.csv")
