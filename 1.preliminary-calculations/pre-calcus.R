@@ -67,21 +67,21 @@ sizeRatios = matrix(c(angles.sp0, angles.sp1, angles.sp2,
                       angles.sp3, angles.sp4, angles.sp5,
                       angles.sp6, angles.sp7, angles.sp8))
 
-rownames(sizeRatios) = c(rep("sp0", length(angles.sp0)),
-                         rep("sp1", length(angles.sp1)),
-                         rep("sp2", length(angles.sp2)),
-                         rep("sp3", length(angles.sp3)),
-                         rep("sp4", length(angles.sp4)),
-                         rep("sp5", length(angles.sp5)),
-                         rep("sp6", length(angles.sp6)),
-                         rep("sp7", length(angles.sp7)),
-                         rep("sp8", length(angles.sp8)))
+rownames(sizeRatios) = c(paste(paste0("sp0_", c("teta", "alpha")), rep(c("stage1", "stage2"), each = 2), sep = "_"),
+                         paste(paste0("sp1_", c("teta", "alpha")), rep(c("stage1", "stage2"), each = 2), sep = "_"),
+                         paste(paste0("sp2_", c("teta", "alpha")), rep(c("stage1", "stage2"), each = 2), sep = "_"),
+                         paste(paste0("sp3_", c("teta", "alpha")), rep(c("stage1", "stage2"), each = 2), sep = "_"),
+                         paste(paste0("sp4_", c("teta", "alpha")), rep(c("stage1", "stage2"), each = 2), sep = "_"),
+                         paste(paste0("sp5_", c("teta", "alpha")), rep(c("stage1"), times = 2), sep = "_"),
+                         paste(paste0("sp6_", c("teta", "alpha")), rep(c("stage1"), times = 2), sep = "_"),
+                         paste(paste0("sp7_", c("teta", "alpha")), rep(c("stage1", "stage2", "stage3"), each = 2), sep = "_"),
+                         paste(paste0("sp8_", c("teta", "alpha")), rep(c("stage1", "stage2"), each = 2), sep = "_"))
 sizeRatios[,1] = round(sizeRatios[,1], 8)
 
 write.csv(sizeRatios, "1.preliminary-calculations/csv/sizeRatios.csv")
 
 
-# 4.   F3: Predation size threshold ---------------------------------------------
+# 4.   F3: Predation stage threshold ---------------------------------------------
 
 s0_frac   = as.numeric(modelConfig[modelConfig[,1] == "predation.predPrey.stage.threshold.sp0", 2]) / as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp0", 2])
 s1_frac   = as.numeric(modelConfig[modelConfig[,1] == "predation.predPrey.stage.threshold.sp1", 2]) / as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp1", 2])
@@ -99,13 +99,21 @@ s7_s2_frac = s7_s2 / Linf.sp7
 
 s7_ratio = s7_s1 / s7_s2
 
-sizeThreshold = matrix(c(s0_frac, s1_frac, s2_frac,
-                         s3_frac, s4_frac, s7_s2_frac,
-                         s7_ratio, s8_frac))
+sizeThreshold = matrix(c(s0_frac ,
+                         s1_frac ,
+                         s2_frac ,
+                         s3_frac ,
+                         s4_frac ,
+                         s7_s2_frac, s7_ratio,
+                         s8_frac))
 
-rownames(sizeThreshold) = c("s0_frac", "s1_frac", "s2_frac",
-                            "s3_frac", "s4_frac", "s7_s2_frac",
-                            "s7_ratio", "s8_frac")
+rownames(sizeThreshold) = c("s0_frac",
+                            "s1_frac",
+                            "s2_frac",
+                            "s3_frac",
+                            "s4_frac",
+                            "s7_s2_frac", "s7_ratio",
+                            "s8_frac")
 
 sizeThreshold[,1] = round(sizeThreshold[,1], 8)
 
@@ -179,6 +187,7 @@ larvalMortality = matrix(c(Lx_sp0, Lx_sp1, Lx_sp2,
                            Lx_sp6, Lx_sp7, Lx_sp8))
 
 rownames(larvalMortality) = paste0("sp", c(0:8))
+larvalMortality[,1] = round(larvalMortality[,1], 8)
 
 write.csv(larvalMortality, "1.preliminary-calculations/csv/larvalMortality.csv")  
   
@@ -186,8 +195,8 @@ write.csv(larvalMortality, "1.preliminary-calculations/csv/larvalMortality.csv")
 
 getL0 = function(sp){
   
-  t0    = as.numeric(modelConfig[modelConfig[,1] == paste0("species.t0.", sp), 2]  )
-  k     = as.numeric(modelConfig[modelConfig[,1] == paste0("species.K.", sp), 2])  
+  t0    = as.numeric(modelConfig[modelConfig[,1] == paste0("species.t0."  , sp), 2])
+  k     = as.numeric(modelConfig[modelConfig[,1] == paste0("species.K."   , sp), 2])  
   Linf  = as.numeric(modelConfig[modelConfig[,1] == paste0("species.lInf.", sp), 2])  
   t = 0
   
@@ -196,15 +205,15 @@ getL0 = function(sp){
   return(l0)
 }
 
-l0_sp0 = getL0(sp = "sp0")
-l0_sp1 = getL0(sp = "sp1")
-l0_sp2 = getL0(sp = "sp2")
-l0_sp3 = getL0(sp = "sp3")
-l0_sp4 = getL0(sp = "sp4")
-l0_sp5 = getL0(sp = "sp5")
-l0_sp6 = getL0(sp = "sp6")
-l0_sp7 = getL0(sp = "sp7")
-l0_sp8 = getL0(sp = "sp8")
+l0_sp0 = getL0(sp = "sp0") / as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp0", 2])
+l0_sp1 = getL0(sp = "sp1") / as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp1", 2])
+l0_sp2 = getL0(sp = "sp2") / as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp2", 2])
+l0_sp3 = getL0(sp = "sp3") / as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp3", 2])
+l0_sp4 = getL0(sp = "sp4") / as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp4", 2])
+l0_sp5 = getL0(sp = "sp5") / as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp5", 2])
+l0_sp6 = getL0(sp = "sp6") / as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp6", 2])
+l0_sp7 = getL0(sp = "sp7") / as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp7", 2])
+l0_sp8 = getL0(sp = "sp8") / as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp8", 2])
 
 l0 = matrix(c(l0_sp0, l0_sp1, l0_sp2,
               l0_sp3, l0_sp4, l0_sp5,
@@ -217,55 +226,57 @@ l0[,1] = round(l0[,1], 8)
 write.csv(l0, "1.preliminary-calculations/csv/l0.csv")
 
 # 16.  Linf (von bertalanffy)                       :  --------------------------
-
-lx_sp0 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp0", 2]) - l0_sp0
-lx_sp1 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp1", 2]) - l0_sp1
-lx_sp2 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp2", 2]) - l0_sp2
-lx_sp3 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp3", 2]) - l0_sp3
-lx_sp4 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp4", 2]) - l0_sp4
-lx_sp5 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp5", 2]) - l0_sp5
-lx_sp6 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp6", 2]) - l0_sp6
-lx_sp7 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp7", 2]) - l0_sp7
-lx_sp8 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp8", 2]) - l0_sp8
-
-lx = matrix(c(lx_sp0, lx_sp1, lx_sp2,
-              lx_sp3, lx_sp4, lx_sp5,
-              lx_sp6, lx_sp7, lx_sp8))
-
-rownames(lx) = paste0("sp", c(0:8))
-
-lx[,1] = round(lx[,1], 8)
-
-write.csv(lx, "1.preliminary-calculations/csv/lx.csv")
+# Linf is not re-parametrized 
 
 # 17.  F5: Size at maturity -----------------------------------------------------
 
-maturity_sp0 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp0", 2])
-maturity_sp1 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp1", 2])
-maturity_sp2 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp2", 2])
-maturity_sp3 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp3", 2])
-maturity_sp4 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp4", 2])
-maturity_sp5 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp5", 2])
-maturity_sp6 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp6", 2])
-maturity_sp7 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp7", 2])
-maturity_sp8 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp8", 2])
+smat_sp0 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp0", 2])
+smat_sp1 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp1", 2])
+smat_sp2 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp2", 2])
+smat_sp3 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp3", 2])
+smat_sp4 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp4", 2])
+smat_sp5 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp5", 2])
+smat_sp6 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp6", 2])
+smat_sp7 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp7", 2])
+smat_sp8 = as.numeric(modelConfig[modelConfig[,1] == "species.maturity.size.sp8", 2])
 
-smat_sp0 = (maturity_sp0/lx_sp0)+l0_sp0
-smat_sp1 = (maturity_sp1/lx_sp1)+l0_sp1
-smat_sp2 = (maturity_sp2/lx_sp2)+l0_sp2
-smat_sp3 = (maturity_sp3/lx_sp3)+l0_sp3
-smat_sp4 = (maturity_sp4/lx_sp4)+l0_sp4
-smat_sp5 = (maturity_sp5/lx_sp5)+l0_sp5
-smat_sp6 = (maturity_sp6/lx_sp6)+l0_sp6
-smat_sp7 = (maturity_sp7/lx_sp7)+l0_sp7
-smat_sp8 = (maturity_sp8/lx_sp8)+l0_sp8
+linf_sp0 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp0", 2])
+linf_sp1 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp1", 2])
+linf_sp2 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp2", 2])
+linf_sp3 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp3", 2])
+linf_sp4 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp4", 2])
+linf_sp5 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp5", 2])
+linf_sp6 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp6", 2])
+linf_sp7 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp7", 2])
+linf_sp8 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp8", 2])
 
-smat = matrix(c(smat_sp0, smat_sp1, smat_sp2,
-                smat_sp3, smat_sp4, smat_sp5,
-                smat_sp6, smat_sp7, smat_sp8))
+l0_sp0 = getL0(sp = "sp0") 
+l0_sp1 = getL0(sp = "sp1")
+l0_sp2 = getL0(sp = "sp2")
+l0_sp3 = getL0(sp = "sp3")
+l0_sp4 = getL0(sp = "sp4")
+l0_sp5 = getL0(sp = "sp5")
+l0_sp6 = getL0(sp = "sp6")
+l0_sp7 = getL0(sp = "sp7")
+l0_sp8 = getL0(sp = "sp8")
 
-rownames(smat) = paste0("sp", c(0:8))
 
-smat[,1] = round(smat[,1], 8)
+sx_sp0   = (smat_sp0 - l0_sp0)/(linf_sp0 - l0_sp0)
+sx_sp1   = (smat_sp1 - l0_sp1)/(linf_sp1 - l0_sp1)
+sx_sp2   = (smat_sp2 - l0_sp2)/(linf_sp2 - l0_sp2)
+sx_sp3   = (smat_sp3 - l0_sp3)/(linf_sp3 - l0_sp3)
+sx_sp4   = (smat_sp4 - l0_sp4)/(linf_sp4 - l0_sp4)
+sx_sp5   = (smat_sp5 - l0_sp5)/(linf_sp5 - l0_sp5)
+sx_sp6   = (smat_sp6 - l0_sp6)/(linf_sp6 - l0_sp6)
+sx_sp7   = (smat_sp7 - l0_sp7)/(linf_sp7 - l0_sp7)
+sx_sp8   = (smat_sp8 - l0_sp8)/(linf_sp8 - l0_sp8)
 
-write.csv(l0, "1.preliminary-calculations/csv/smat.csv")
+sx       = matrix(c(sx_sp0, sx_sp1, sx_sp2,
+                    sx_sp3, sx_sp4, sx_sp5,
+                    sx_sp6, sx_sp7, sx_sp8))
+
+rownames(sx) = paste0("sp", c(0:8))
+
+sx[,1] = round(sx[,1], 8)
+
+write.csv(sx, "1.preliminary-calculations/csv/sx.csv")
