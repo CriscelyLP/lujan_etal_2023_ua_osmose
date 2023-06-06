@@ -39,6 +39,8 @@ run_model = function(par, names, ...) {
   outputDir = "output"
   
   sp = (0+1) #species0
+  
+  
   # Manually changes about PREDATION ACCESSIBILITY
   predationAccessibility = read.csv(file.path(configDir, "input/predation/predation-accessibility.csv"), stringsAsFactors = FALSE, sep = ";")
   pred = as.matrix(predationAccessibility[,-1])
@@ -58,29 +60,35 @@ run_model = function(par, names, ...) {
   write.table(predationAccessibility, file = file.path(configDir, "newPredationAccessibility.csv"), row.names = FALSE, sep = ";")
   modelConfig[modelConfig[,1] == "predation.accessibility.file", 2] = "newPredationAccessibility.csv"
   
+  
   # Manually changes about PREDATION SIZE RATIOS
   theta.sp0.stage1   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.theta.sp0.stage1"]) * (pi/2)
-  alpha.sp0.stage1   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp0.stage1"]) * (pi/2)
+  alpha.sp0.stage1   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp0.stage1"]) * ((pi/2)-theta.sp0.stage1)
   min.sp0.stage1 = 1/maxSlope(angle = theta.sp0.stage1, m_min = 0)
   max.sp0.stage1 = 1/maxSlope(angle = alpha.sp0.stage1, m_min = 1/min.sp0.stage1)
   
   theta.sp0.stage2   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.theta.sp0.stage2"]) * (pi/2)
-  alpha.sp0.stage2   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp0.stage2"]) * (pi/2)
+  alpha.sp0.stage2   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp0.stage2"]) * ((pi/2)-theta.sp0.stage2)
   min.sp0.stage2 = 1/maxSlope(angle = theta.sp0.stage2, m_min = 0)
   max.sp0.stage2 = 1/maxSlope(angle = alpha.sp0.stage2, m_min = 1/min.sp0.stage2)
   
   modelConfig[modelConfig[,1] == "predation.predPrey.sizeRatio.max.sp0", c(2,3)] = c(max.sp0.stage1, max.sp0.stage2)
   modelConfig[modelConfig[,1] == "predation.predPrey.sizeRatio.min.sp0", c(2,3)] = c(min.sp0.stage1, min.sp0.stage2)
   
+  
   # PredPrey stage threshold
   Linf.sp0.per = par[names(par) == "species.lInf.sp0"]
   modelConfig[modelConfig[,1] == "predation.predPrey.stage.threshold.sp0", 2]    = par[names(par) == "predation.predPrey.stage.threshold.sp0"] * (Linf.sp0.per)
   
+  
   # Starvation rate max
   modelConfig[modelConfig[,1] == "mortality.starvation.rate.max.sp0", 2]         = par[names(par) == "mortality.starvation.rate.max.sp0"]
   
+  
   # vonBertalanffy threshold
-  modelConfig[modelConfig[,1] == "species.vonbertalanffy.threshold.age.sp0", 2]  = par[names(par) == "species.vonbertalanffy.threshold.age.sp0"] * (Linf.sp0.per)
+  amax.sp0 = par[names(par) == "species.lifespan.sp0"]
+  modelConfig[modelConfig[,1] == "species.vonbertalanffy.threshold.age.sp0", 2]  = par[names(par) == "species.vonbertalanffy.threshold.age.sp0"] * (amax.sp0)
+  
   
   # Manually changes about egg SIZE AND WEIGHT
   eggSize.sp0   = as.numeric(modelConfig[modelConfig[,1] == "species.egg.size.sp0", 2])
@@ -91,12 +99,15 @@ run_model = function(par, names, ...) {
   modelConfig[modelConfig[,1] == "species.egg.weight.sp0", 2] = eggWeight
   modelConfig[modelConfig[,1] == "species.egg.size.sp0", 2]   = eggSize
   
+  
   # Critical efficiency and predation ingestion rate 
   modelConfig[modelConfig[,1] == "predation.efficiency.critical.sp0", 2]  = par[names(par) == "predation.efficiency.critical.sp0"]
   modelConfig[modelConfig[,1] == "predation.ingestion.rate.max.sp0", 2]   = par[names(par) == "predation.ingestion.rate.max.sp0"]
   
+  
   # Natural mortality
   modelConfig[modelConfig[,1] == "mortality.natural.rate.sp0", 2]  = par[names(par) == "mortality.natural.rate.sp0"]
+  
   
   # Manually changes about larval mortality: 19 par but perturbing the mean
   larvalMortality.sp0 = read.csv(file.path(configDir, "input/larval/larval_mortality-anchovy.csv"), stringsAsFactors = FALSE, sep = ";")
@@ -114,6 +125,7 @@ run_model = function(par, names, ...) {
   write.table(newLarvalMortality.sp, file = file.path(configDir, "newLavalMortality-anchovy.csv"), row.names = FALSE, sep = ";")
   modelConfig[modelConfig[,1] == "mortality.natural.larva.rate.bytDt.file.sp0", 2] = "newLavalMortality-anchovy.csv"
   
+  
   # Manually changes about fishing mortality #### TO CHECK
   # 224 parameters: 1 (f media) + T (between years) + 12T (distribution of the fishing between years) + 2 (fishing selectivity)
   fishing_multiplier    = par[names(par) == "fishing.multiplier.sp0"]
@@ -123,24 +135,30 @@ run_model = function(par, names, ...) {
   write.table(fishingMortality.sp0, file = file.path(configDir, "newFishingMortality-anchovy.csv"), row.names = FALSE, sep = ";")
   modelConfig[modelConfig[,1] == "mortality.fishing.rate.byDt.bySize.file.sp0", 2] = "newFishingMortality-anchovy.csv"
   
+  
   # Sex ratio
   modelConfig[modelConfig[,1] == "species.sexratio.sp0", 2]  = par[names(par) == "species.sexratio.sp0"]
+  
   
   # Von Bertalanffy parameters: l0 perturbed instead of t0
   t0.sp0   = as.numeric(modelConfig[modelConfig[,1] == "species.t0.sp0", 2])
   K.sp0    = as.numeric(modelConfig[modelConfig[,1] == "species.K.sp0", 2])
   Linf.sp0 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp0", 2])
   
-  newl0.sp0   = par[names(par) == "species.l0.sp0"]
+  l0.sp0      = par[names(par) == "species.l0.sp0"]
+  newl0.sp0   = l0.sp0 * (Linf.sp0.per)
   newt0.sp0   = t0.sp0 - (1 / K.sp0) * (log(1 - (newl0.sp0 / Linf.sp0)))
   modelConfig[modelConfig[,1] == "species.t0.sp0", 2]  = newt0.sp0
+  
   
   # Von Bertalanffy parameters: K and lInf
   modelConfig[modelConfig[,1] == "species.K.sp0", 2]              = par[names(par) == "species.K.sp0"]
   modelConfig[modelConfig[,1] == "species.lInf.sp0", 2]           = par[names(par) == "species.lInf.sp0"]
   
   # maturity size
-  modelConfig[modelConfig[,1] == "species.maturity.size.sp0", 2]  = par[names(par) == "species.maturity.size.sp0"] * (Linf.sp0.per)
+  sx.sp0   = par[names(par) == "species.smat.sp0"]
+  smat.sp0 = ((sx.sp0)*(Linf.sp0.per - l0.sp0)) + l0.sp0
+  modelConfig[modelConfig[,1] == "species.maturity.size.sp0", 2]  = smat.sp0
   
   # Length to weight relationship: condition factor perturbed
   modelConfig[modelConfig[,1] == "species.length2weight.condition.factor.sp0", 2]  =  par[names(par) == "species.length2weight.condition.factor.sp0"]
