@@ -21,7 +21,7 @@ mortality.natural.rate.sp4,mc,0.213566390603398,log
 mortality.natural.larva.rate.Lx.sp4,mc,13.12104839,log
 fishing.multiplier.sp4,mc,1,log
 species.sexratio.sp4,hqd,0.5,logit
-species.l0.sp4,hqd,0.0202913,log
+species.l0.sp4,hqd,0.0202913,logit
 species.K.sp4,hqd,0.41,log
 species.lInf.sp4,hqd,40.6,log
 species.maturity.size.sp4,hqd,0.70836812,logit

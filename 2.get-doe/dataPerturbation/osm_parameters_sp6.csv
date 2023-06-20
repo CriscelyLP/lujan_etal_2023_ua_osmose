@@ -17,7 +17,7 @@ predation.ingestion.rate.max.sp6,er,3.5,log
 mortality.natural.rate.sp6,mc,0.23222006183365,log
 mortality.natural.larva.rate.Lx.sp6,mc,6.7571602,log
 species.sexratio.sp6,hqd,0.5,logit
-species.l0.sp6,hqd,0.11573634,log
+species.l0.sp6,hqd,0.11573634,logit
 species.K.sp6,hqd,0.375,log
 species.lInf.sp6,hqd,4.2,log
 species.maturity.size.sp6,hqd,0.38070615,logit

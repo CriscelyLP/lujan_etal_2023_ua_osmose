@@ -20,7 +20,7 @@ predation.ingestion.rate.max.sp8,er,3.5,log
 mortality.natural.rate.sp8,mc,0.287938393513573,log
 mortality.natural.larva.rate.Lx.sp8,mc,1.5779101,log
 species.sexratio.sp8,hqd,0.5,logit
-species.l0.sp8,hqd,0.29980751,log
+species.l0.sp8,hqd,0.29980751,logit
 species.K.sp8,hqd,1.8,log
 species.lInf.sp8,hqd,2.6,log
 species.maturity.size.sp8,hqd,0.0112609,logit
