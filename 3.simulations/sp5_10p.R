@@ -5,7 +5,7 @@ require(osmose)
 
 # Source of scripts -------------------------------------------------------
 
-#home directory
+setwd("/home1/datahome/clujanpa/sensitivity_osmose")
 
 source("internal-functions.R")
 source("random-sampling.R")
@@ -16,9 +16,9 @@ source("auxiliar.R")
 # 1. Doe (design of experiments) ------------------------------------------
 # Building the matrix with the design of experiments (doe)
 
-# work directory
+setwd("/home/datawork-marbec-scenlab/OSMOSE/Criscely/ua_osmose_paper/outputs_uncertainty/sp5_10p")
 
-doe = readRDS(file = "doe_sp5_20p.rds")
+doe = readRDS(file = "doe_sp5_10p.rds")
 
 # 2. run function ---------------------------------------------------------
 # The user has to provide a function to evaluate for each parameter vector
@@ -39,6 +39,8 @@ run_model = function(par, names, ...) {
   outputDir = "output"
   
   sp = (5+1) #species5
+  
+  
   # Manually changes about PREDATION ACCESSIBILITY
   predationAccessibility = read.csv(file.path(configDir, "input/predation/predation-accessibility.csv"), stringsAsFactors = FALSE, sep = ";")
   pred = as.matrix(predationAccessibility[,-1])
@@ -58,21 +60,25 @@ run_model = function(par, names, ...) {
   write.table(predationAccessibility, file = file.path(configDir, "newPredationAccessibility.csv"), row.names = FALSE, sep = ";")
   modelConfig[modelConfig[,1] == "predation.accessibility.file", 2] = "newPredationAccessibility.csv"
   
+  
   # Manually changes about PREDATION SIZE RATIOS
   theta.sp5.stage1   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.theta.sp5.stage1"]) * (pi/2)
-  alpha.sp5.stage1   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp5.stage1"]) * (pi/2)
+  alpha.sp5.stage1   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp5.stage1"]) * ((pi/2)-theta.sp5.stage1)
   min.sp5.stage1 = 1/maxSlope(angle = theta.sp5.stage1, m_min = 0)
   max.sp5.stage1 = 1/maxSlope(angle = alpha.sp5.stage1, m_min = 1/min.sp5.stage1)
   
   modelConfig[modelConfig[,1] == "predation.predPrey.sizeRatio.max.sp5", c(2)] = c(max.sp5.stage1)
   modelConfig[modelConfig[,1] == "predation.predPrey.sizeRatio.min.sp5", c(2)] = c(min.sp5.stage1)
   
+  
   # Starvation rate max
   modelConfig[modelConfig[,1] == "mortality.starvation.rate.max.sp5", 2]         = par[names(par) == "mortality.starvation.rate.max.sp5"]
   
+  
   # vonBertalanffy threshold
-  Linf.sp5.per = par[names(par) == "species.lInf.sp5"]
-  modelConfig[modelConfig[,1] == "species.vonbertalanffy.threshold.age.sp5", 2]  = par[names(par) == "species.vonbertalanffy.threshold.age.sp5"] * (Linf.sp5.per)
+  amax.sp5 = par[names(par) == "species.lifespan.sp5"]
+  modelConfig[modelConfig[,1] == "species.vonbertalanffy.threshold.age.sp5", 2]  = par[names(par) == "species.vonbertalanffy.threshold.age.sp5"] * (amax.sp5)
+  
   
   # Manually changes about egg SIZE AND WEIGHT
   eggSize.sp5   = as.numeric(modelConfig[modelConfig[,1] == "species.egg.size.sp5", 2])
@@ -82,13 +88,16 @@ run_model = function(par, names, ...) {
   eggWeight   = (4/3 * pi) * (as.numeric(eggSize)/2)^3 * meanDensity.sp5
   modelConfig[modelConfig[,1] == "species.egg.weight.sp5", 2] = eggWeight
   modelConfig[modelConfig[,1] == "species.egg.size.sp5", 2]   = eggSize
-  
+ 
+   
   # Critical efficiency and predation ingestion rate 
   modelConfig[modelConfig[,1] == "predation.efficiency.critical.sp5", 2]  = par[names(par) == "predation.efficiency.critical.sp5"]
   modelConfig[modelConfig[,1] == "predation.ingestion.rate.max.sp5", 2]   = par[names(par) == "predation.ingestion.rate.max.sp5"]
   
+  
   # Natural mortality
   modelConfig[modelConfig[,1] == "mortality.natural.rate.sp5", 2]  = par[names(par) == "mortality.natural.rate.sp5"]
+  
   
   # Manually changes about larval mortality: 19 par but perturbing the mean
   larvalMortality.sp5 = read.csv(file.path(configDir, "input/larval/larval_mortality-meso.csv"), stringsAsFactors = FALSE, sep = ";")
@@ -106,24 +115,31 @@ run_model = function(par, names, ...) {
   write.table(newLarvalMortality.sp, file = file.path(configDir, "newLavalMortality-meso.csv"), row.names = FALSE, sep = ";")
   modelConfig[modelConfig[,1] == "mortality.natural.larva.rate.bytDt.file.sp5", 2] = "newLavalMortality-meso.csv"
   
+  
   # Sex ratio
   modelConfig[modelConfig[,1] == "species.sexratio.sp5", 2]  = par[names(par) == "species.sexratio.sp5"]
+  
   
   # Von Bertalanffy parameters: l0 perturbed instead of t0
   t0.sp5   = as.numeric(modelConfig[modelConfig[,1] == "species.t0.sp5", 2])
   K.sp5    = as.numeric(modelConfig[modelConfig[,1] == "species.K.sp5", 2])
   Linf.sp5 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp5", 2])
   
-  newl0.sp5   = par[names(par) == "species.l0.sp5"]
+  l0.sp5      = par[names(par) == "species.l0.sp5"]
+  Linf.sp5.per= par[names(par) == "species.lInf.sp5"] 
+  newl0.sp5   = l0.sp5 * (Linf.sp5.per)
   newt0.sp5   = t0.sp5 - (1 / K.sp5) * (log(1 - (newl0.sp5 / Linf.sp5)))
   modelConfig[modelConfig[,1] == "species.t0.sp5", 2]  = newt0.sp5
+  
   
   # Von Bertalanffy parameters: K and lInf
   modelConfig[modelConfig[,1] == "species.K.sp5", 2]              = par[names(par) == "species.K.sp5"]
   modelConfig[modelConfig[,1] == "species.lInf.sp5", 2]           = par[names(par) == "species.lInf.sp5"]
   
   # maturity size
-  modelConfig[modelConfig[,1] == "species.maturity.size.sp5", 2]  = par[names(par) == "species.maturity.size.sp5"] * (Linf.sp5.per)
+  sx.sp5   = par[names(par) == "species.smat.sp5"]
+  smat.sp5 = ((sx.sp5)*(Linf.sp5.per - l0.sp5)) + l0.sp5
+  modelConfig[modelConfig[,1] == "species.maturity.size.sp5", 2]  = smat.sp5
   
   # Length to weight relationship: condition factor perturbed
   modelConfig[modelConfig[,1] == "species.length2weight.condition.factor.sp5", 2]  =  par[names(par) == "species.length2weight.condition.factor.sp5"]
@@ -158,7 +174,7 @@ run_model = function(par, names, ...) {
 # 3. save outputs ---------------------------------------------------------
 
 start = date()
-fixed20p_sp5 = run_experiments(X = doe, FUN = run_model, names=doe$parameter, parallel=TRUE)
+fixed10p_sp5 = run_experiments(X = doe, FUN = run_model, names=doe$parameter, parallel=TRUE)
 end   = date()
 
-saveRDS(object = fixed20p_sp5, file = "fixed20p_sp5.rds")
+saveRDS(object = fixed10p_sp5, file = "fixed10p_sp5.rds")
