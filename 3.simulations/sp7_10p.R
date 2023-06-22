@@ -5,7 +5,7 @@ require(osmose)
 
 # Source of scripts -------------------------------------------------------
 
-#home directory
+setwd("/home1/datahome/clujanpa/sensitivity_osmose")
 
 source("internal-functions.R")
 source("random-sampling.R")
@@ -16,9 +16,9 @@ source("auxiliar.R")
 # 1. Doe (design of experiments) ------------------------------------------
 # Building the matrix with the design of experiments (doe)
 
-# work directory
+setwd("/home/datawork-marbec-scenlab/OSMOSE/Criscely/ua_osmose_paper/outputs_uncertainty/sp7_10p")
 
-doe = readRDS(file = "doe_sp7_20p.rds")
+doe = readRDS(file = "doe_sp7_10p.rds")
 
 # 2. run function ---------------------------------------------------------
 # The user has to provide a function to evaluate for each parameter vector
@@ -39,6 +39,8 @@ run_model = function(par, names, ...) {
   outputDir = "output"
   
   sp = (7+1) #species7
+  
+  
   # Manually changes about PREDATION ACCESSIBILITY
   predationAccessibility = read.csv(file.path(configDir, "input/predation/predation-accessibility.csv"), stringsAsFactors = FALSE, sep = ";")
   pred = as.matrix(predationAccessibility[,-1])
@@ -58,24 +60,26 @@ run_model = function(par, names, ...) {
   write.table(predationAccessibility, file = file.path(configDir, "newPredationAccessibility.csv"), row.names = FALSE, sep = ";")
   modelConfig[modelConfig[,1] == "predation.accessibility.file", 2] = "newPredationAccessibility.csv"
   
+  
   # Manually changes about PREDATION SIZE RATIOS
   theta.sp7.stage1   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.theta.sp7.stage1"]) * (pi/2)
-  alpha.sp7.stage1   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp7.stage1"]) * (pi/2)
+  alpha.sp7.stage1   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp7.stage1"]) * ((pi/2)-theta.sp7.stage1)
   min.sp7.stage1 = 1/maxSlope(angle = theta.sp7.stage1, m_min = 0)
   max.sp7.stage1 = 1/maxSlope(angle = alpha.sp7.stage1, m_min = 1/min.sp7.stage1)
   
   theta.sp7.stage2   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.theta.sp7.stage2"]) * (pi/2)
-  alpha.sp7.stage2   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp7.stage2"]) * (pi/2)
+  alpha.sp7.stage2   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp7.stage2"]) * ((pi/2)-theta.sp7.stage2)
   min.sp7.stage2 = 1/maxSlope(angle = theta.sp7.stage2, m_min = 0)
   max.sp7.stage2 = 1/maxSlope(angle = alpha.sp7.stage2, m_min = 1/min.sp7.stage2)
   
   theta.sp7.stage3   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.theta.sp7.stage3"]) * (pi/2)
-  alpha.sp7.stage3   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp7.stage3"]) * (pi/2)
+  alpha.sp7.stage3   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp7.stage3"]) * ((pi/2)-theta.sp7.stage3)
   min.sp7.stage3 = 1/maxSlope(angle = theta.sp7.stage3, m_min = 0)
   max.sp7.stage3 = 1/maxSlope(angle = alpha.sp7.stage3, m_min = 1/min.sp7.stage3)
   
   modelConfig[modelConfig[,1] == "predation.predPrey.sizeRatio.max.sp7", c(2,3,4)] = c(max.sp7.stage1, max.sp7.stage2, max.sp7.stage3)
   modelConfig[modelConfig[,1] == "predation.predPrey.sizeRatio.min.sp7", c(2,3,4)] = c(min.sp7.stage1, min.sp7.stage2, min.sp7.stage3)
+  
   
   # PredPrey stage threshold
   Linf.sp7.per = par[names(par) == "species.lInf.sp7"]
@@ -83,12 +87,16 @@ run_model = function(par, names, ...) {
   sp7.ratio    = par[names(par) == "predation.predPrey.stage.threshold.sp7.ratio"]
   sp7.stage1   = sp7.ratio * sp7.stage2
   modelConfig[modelConfig[,1] == "predation.predPrey.stage.threshold.sp7", c(2,3)]    = c(sp7.stage1, sp7.stage2)
-  
+ 
+   
   # Starvation rate max
   modelConfig[modelConfig[,1] == "mortality.starvation.rate.max.sp7", 2]         = par[names(par) == "mortality.starvation.rate.max.sp7"]
   
+  
   # vonBertalanffy threshold
-  modelConfig[modelConfig[,1] == "species.vonbertalanffy.threshold.age.sp7", 2]  = par[names(par) == "species.vonbertalanffy.threshold.age.sp7"] * (Linf.sp7.per)
+  amax.sp7 = par[names(par) == "species.lifespan.sp7"]
+  modelConfig[modelConfig[,1] == "species.vonbertalanffy.threshold.age.sp7", 2]  = par[names(par) == "species.vonbertalanffy.threshold.age.sp7"] * (amax.sp7)
+  
   
   # Manually changes about egg SIZE AND WEIGHT
   eggSize.sp7   = as.numeric(modelConfig[modelConfig[,1] == "species.egg.size.sp7", 2])
@@ -98,13 +106,16 @@ run_model = function(par, names, ...) {
   eggWeight   = (4/3 * pi) * (as.numeric(eggSize)/2)^3 * meanDensity.sp7
   modelConfig[modelConfig[,1] == "species.egg.weight.sp7", 2] = eggWeight
   modelConfig[modelConfig[,1] == "species.egg.size.sp7", 2]   = eggSize
-  
+ 
+   
   # Critical efficiency and predation ingestion rate 
   modelConfig[modelConfig[,1] == "predation.efficiency.critical.sp7", 2]  = par[names(par) == "predation.efficiency.critical.sp7"]
   modelConfig[modelConfig[,1] == "predation.ingestion.rate.max.sp7", 2]   = par[names(par) == "predation.ingestion.rate.max.sp7"]
   
+  
   # Natural mortality
   modelConfig[modelConfig[,1] == "mortality.natural.rate.sp7", 2]  = par[names(par) == "mortality.natural.rate.sp7"]
+  
   
   # Manually changes about larval mortality: 19 par but perturbing the mean
   larvalMortality.sp7 = read.csv(file.path(configDir, "input/larval/larval_mortality-pota.csv"), stringsAsFactors = FALSE, sep = ";")
@@ -122,6 +133,7 @@ run_model = function(par, names, ...) {
   write.table(newLarvalMortality.sp, file = file.path(configDir, "newLavalMortality-pota.csv"), row.names = FALSE, sep = ";")
   modelConfig[modelConfig[,1] == "mortality.natural.larva.rate.bytDt.file.sp7", 2] = "newLavalMortality-pota.csv"
   
+  
   # Manually changes about fishing mortality #### TO CHECK
   # 224 parameters: 1 (f media) + T (between years) + 12T (distribution of the fishing between years) + 2 (fishing selectivity)
   fishing_multiplier    = par[names(par) == "fishing.multiplier.sp7"]
@@ -131,24 +143,30 @@ run_model = function(par, names, ...) {
   write.table(fishingMortality.sp7, file = file.path(configDir, "newFishingMortality-pota.csv"), row.names = FALSE, sep = ";")
   modelConfig[modelConfig[,1] == "mortality.fishing.rate.byDt.bySize.file.sp7", 2] = "newFishingMortality-pota.csv"
   
+  
   # Sex ratio
   modelConfig[modelConfig[,1] == "species.sexratio.sp7", 2]  = par[names(par) == "species.sexratio.sp7"]
+  
   
   # Von Bertalanffy parameters: l0 perturbed instead of t0
   t0.sp7   = as.numeric(modelConfig[modelConfig[,1] == "species.t0.sp7", 2])
   K.sp7    = as.numeric(modelConfig[modelConfig[,1] == "species.K.sp7", 2])
   Linf.sp7 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp7", 2])
   
-  newl0.sp7   = par[names(par) == "species.l0.sp7"]
+  l0.sp7      = par[names(par) == "species.l0.sp7"]
+  newl0.sp7   = l0.sp7 * (Linf.sp7.per)
   newt0.sp7   = t0.sp7 - (1 / K.sp7) * (log(1 - (newl0.sp7 / Linf.sp7)))
   modelConfig[modelConfig[,1] == "species.t0.sp7", 2]  = newt0.sp7
+  
   
   # Von Bertalanffy parameters: K and lInf
   modelConfig[modelConfig[,1] == "species.K.sp7", 2]              = par[names(par) == "species.K.sp7"]
   modelConfig[modelConfig[,1] == "species.lInf.sp7", 2]           = par[names(par) == "species.lInf.sp7"]
   
   # maturity size
-  modelConfig[modelConfig[,1] == "species.maturity.size.sp7", 2]  = par[names(par) == "species.maturity.size.sp7"] * (Linf.sp7.per)
+  sx.sp7   = par[names(par) == "species.smat.sp7"]
+  smat.sp7 = ((sx.sp7)*(Linf.sp7.per - l0.sp7)) + l0.sp7
+  modelConfig[modelConfig[,1] == "species.maturity.size.sp7", 2]  = smat.sp7
   
   # Length to weight relationship: condition factor perturbed
   modelConfig[modelConfig[,1] == "species.length2weight.condition.factor.sp7", 2]  =  par[names(par) == "species.length2weight.condition.factor.sp7"]
@@ -183,7 +201,7 @@ run_model = function(par, names, ...) {
 # 3. save outputs ---------------------------------------------------------
 
 start = date()
-fixed20p_sp7 = run_experiments(X = doe, FUN = run_model, names=doe$parameter, parallel=TRUE)
+fixed10p_sp7 = run_experiments(X = doe, FUN = run_model, names=doe$parameter, parallel=TRUE)
 end   = date()
 
-saveRDS(object = fixed20p_sp7, file = "fixed20p_sp7.rds")
+saveRDS(object = fixed10p_sp7, file = "fixed10p_sp7.rds")
