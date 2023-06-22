@@ -5,7 +5,7 @@ require(osmose)
 
 # Source of scripts -------------------------------------------------------
 
-#home directory
+setwd("/home1/datahome/clujanpa/sensitivity_osmose")
 
 source("internal-functions.R")
 source("random-sampling.R")
@@ -16,9 +16,9 @@ source("auxiliar.R")
 # 1. Doe (design of experiments) ------------------------------------------
 # Building the matrix with the design of experiments (doe)
 
-# work directory
+setwd("/home/datawork-marbec-scenlab/OSMOSE/Criscely/ua_osmose_paper/outputs_uncertainty/sp1_10p")
 
-doe = readRDS(file = "doe_sp1_20p.rds")
+doe = readRDS(file = "doe_sp1_10p.rds")
 
 # 2. run function ---------------------------------------------------------
 # The user has to provide a function to evaluate for each parameter vector
@@ -39,6 +39,8 @@ run_model = function(par, names, ...) {
   outputDir = "output"
   
   sp = (1+1) #species1 + 1
+ 
+  
   # Manually changes about PREDATION ACCESSIBILITY
   predationAccessibility = read.csv(file.path(configDir, "input/predation/predation-accessibility.csv"), stringsAsFactors = FALSE, sep = ";")
   pred = as.matrix(predationAccessibility[,-1])
@@ -57,30 +59,36 @@ run_model = function(par, names, ...) {
   colnames(predationAccessibility)[1] = ""
   write.table(predationAccessibility, file = file.path(configDir, "newPredationAccessibility.csv"), row.names = FALSE, sep = ";")
   modelConfig[modelConfig[,1] == "predation.accessibility.file", 2] = "newPredationAccessibility.csv"
-  
+ 
+   
   # Manually changes about PREDATION SIZE RATIOS
   theta.sp1.stage1   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.theta.sp1.stage1"]) * (pi/2)
-  alpha.sp1.stage1   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp1.stage1"]) * (pi/2)
+  alpha.sp1.stage1   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp1.stage1"]) * ((pi/2)-theta.sp1.stage1)
   min.sp1.stage1 = 1/maxSlope(angle = theta.sp1.stage1, m_min = 0)
   max.sp1.stage1 = 1/maxSlope(angle = alpha.sp1.stage1, m_min = 1/min.sp1.stage1)
   
   theta.sp1.stage2   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.theta.sp1.stage2"]) * (pi/2)
-  alpha.sp1.stage2   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp1.stage2"]) * (pi/2)
+  alpha.sp1.stage2   = as.numeric(par[names(par) == "predation.predPrey.sizeRatio.alpha.sp1.stage2"]) * ((pi/2)-theta.sp1.stage2)
   min.sp1.stage2 = 1/maxSlope(angle = theta.sp1.stage2, m_min = 0)
   max.sp1.stage2 = 1/maxSlope(angle = alpha.sp1.stage2, m_min = 1/min.sp1.stage2)
   
   modelConfig[modelConfig[,1] == "predation.predPrey.sizeRatio.max.sp1", c(2,3)] = c(max.sp1.stage1, max.sp1.stage2)
   modelConfig[modelConfig[,1] == "predation.predPrey.sizeRatio.min.sp1", c(2,3)] = c(min.sp1.stage1, min.sp1.stage2)
   
+  
   # PredPrey stage threshold
   Linf.sp1.per = par[names(par) == "species.lInf.sp1"]
   modelConfig[modelConfig[,1] == "predation.predPrey.stage.threshold.sp1", 2]    = par[names(par) == "predation.predPrey.stage.threshold.sp1"] * (Linf.sp1.per)
   
+  
   # Starvation rate max
   modelConfig[modelConfig[,1] == "mortality.starvation.rate.max.sp1", 2]         = par[names(par) == "mortality.starvation.rate.max.sp1"]
   
+  
   # vonBertalanffy threshold
-  modelConfig[modelConfig[,1] == "species.vonbertalanffy.threshold.age.sp1", 2]  = par[names(par) == "species.vonbertalanffy.threshold.age.sp1"] * (Linf.sp1.per)
+  amax.sp1 = par[names(par) == "species.lifespan.sp1"]
+  modelConfig[modelConfig[,1] == "species.vonbertalanffy.threshold.age.sp1", 2]  = par[names(par) == "species.vonbertalanffy.threshold.age.sp1"] * (amax.sp1)
+  
   
   # Manually changes about egg SIZE AND WEIGHT
   eggSize.sp1   = as.numeric(modelConfig[modelConfig[,1] == "species.egg.size.sp1", 2])
@@ -91,12 +99,15 @@ run_model = function(par, names, ...) {
   modelConfig[modelConfig[,1] == "species.egg.weight.sp1", 2] = eggWeight
   modelConfig[modelConfig[,1] == "species.egg.size.sp1", 2]   = eggSize
   
+  
   # Critical efficiency and predation ingestion rate 
   modelConfig[modelConfig[,1] == "predation.efficiency.critical.sp1", 2]  = par[names(par) == "predation.efficiency.critical.sp1"]
   modelConfig[modelConfig[,1] == "predation.ingestion.rate.max.sp1", 2]   = par[names(par) == "predation.ingestion.rate.max.sp1"]
   
+  
   # Natural mortality
   modelConfig[modelConfig[,1] == "mortality.natural.rate.sp1", 2]  = par[names(par) == "mortality.natural.rate.sp1"]
+  
   
   # Manually changes about larval mortality: 19 par but perturbing the mean
   larvalMortality.sp1 = read.csv(file.path(configDir, "input/larval/larval_mortality-hake.csv"), stringsAsFactors = FALSE, sep = ";")
@@ -114,6 +125,7 @@ run_model = function(par, names, ...) {
   write.table(newLarvalMortality.sp, file = file.path(configDir, "newLavalMortality-hake.csv"), row.names = FALSE, sep = ";")
   modelConfig[modelConfig[,1] == "mortality.natural.larva.rate.bytDt.file.sp1", 2] = "newLavalMortality-hake.csv"
   
+  
   # Manually changes about fishing mortality #### TO CHECK
   # 224 parameters: 1 (f media) + T (between years) + 12T (distribution of the fishing between years) + 2 (fishing selectivity)
   fishing_multiplier    = par[names(par) == "fishing.multiplier.sp1"]
@@ -123,24 +135,30 @@ run_model = function(par, names, ...) {
   write.table(fishingMortality.sp1, file = file.path(configDir, "newFishingMortality-hake.csv"), row.names = FALSE, sep = ";")
   modelConfig[modelConfig[,1] == "mortality.fishing.rate.byDt.bySize.file.sp1", 2] = "newFishingMortality-hake.csv"
   
+  
   # Sex ratio
   modelConfig[modelConfig[,1] == "species.sexratio.sp1", 2]  = par[names(par) == "species.sexratio.sp1"]
+  
   
   # Von Bertalanffy parameters: l0 perturbed instead of t0
   t0.sp1   = as.numeric(modelConfig[modelConfig[,1] == "species.t0.sp1", 2])
   K.sp1    = as.numeric(modelConfig[modelConfig[,1] == "species.K.sp1", 2])
   Linf.sp1 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp1", 2])
   
-  newl0.sp1   = par[names(par) == "species.l0.sp1"]
+  l0.sp1      = par[names(par) == "species.l0.sp1"]
+  newl0.sp1   = l0.sp1 * (Linf.sp1.per)
   newt0.sp1   = t0.sp1 - (1 / K.sp1) * (log(1 - (newl0.sp1 / Linf.sp1)))
   modelConfig[modelConfig[,1] == "species.t0.sp1", 2]  = newt0.sp1
+  
   
   # Von Bertalanffy parameters: K and lInf
   modelConfig[modelConfig[,1] == "species.K.sp1", 2]              = par[names(par) == "species.K.sp1"]
   modelConfig[modelConfig[,1] == "species.lInf.sp1", 2]           = par[names(par) == "species.lInf.sp1"]
   
   # maturity size
-  modelConfig[modelConfig[,1] == "species.maturity.size.sp1", 2]  = par[names(par) == "species.maturity.size.sp1"] * (Linf.sp1.per)
+  sx.sp1   = par[names(par) == "species.smat.sp1"]
+  smat.sp1 = ((sx.sp1)*(Linf.sp1.per - l0.sp1)) + l0.sp1
+  modelConfig[modelConfig[,1] == "species.maturity.size.sp1", 2]  = smat.sp1
   
   # Length to weight relationship: condition factor perturbed
   modelConfig[modelConfig[,1] == "species.length2weight.condition.factor.sp1", 2]  =  par[names(par) == "species.length2weight.condition.factor.sp1"]
@@ -175,7 +193,7 @@ run_model = function(par, names, ...) {
 # 3. save outputs ---------------------------------------------------------
 
 start = date()
-fixed20p_sp1 = run_experiments(X = doe, FUN = run_model, names=doe$parameter, parallel=TRUE)
+fixed10p_sp1 = run_experiments(X = doe, FUN = run_model, names=doe$parameter, parallel=TRUE)
 end   = date()
 
-saveRDS(object = fixed20p_sp1, file = "fixed20p_sp1.rds")
+saveRDS(object = fixed10p_sp1, file = "fixed10p_sp1.rds")
