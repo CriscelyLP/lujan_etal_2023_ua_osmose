@@ -76,7 +76,7 @@ run_model = function(par, names, ...) {
   
   
   # vonBertalanffy threshold
-  amax.sp5 = par[names(par) == "species.lifespan.sp5"]
+  amax.sp5 = as.numeric(modelConfig[modelConfig[,1] == "species.lifespan.sp5", 2])
   modelConfig[modelConfig[,1] == "species.vonbertalanffy.threshold.age.sp5", 2]  = par[names(par) == "species.vonbertalanffy.threshold.age.sp5"] * (amax.sp5)
   
   
@@ -137,7 +137,7 @@ run_model = function(par, names, ...) {
   modelConfig[modelConfig[,1] == "species.lInf.sp5", 2]           = par[names(par) == "species.lInf.sp5"]
   
   # maturity size
-  sx.sp5   = par[names(par) == "species.smat.sp5"]
+  sx.sp5   = par[names(par) == "species.maturity.size.sp5"]
   smat.sp5 = ((sx.sp5)*(Linf.sp5.per - l0.sp5)) + l0.sp5
   modelConfig[modelConfig[,1] == "species.maturity.size.sp5", 2]  = smat.sp5
   
