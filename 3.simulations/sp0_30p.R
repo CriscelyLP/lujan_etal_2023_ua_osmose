@@ -16,9 +16,9 @@ source("auxiliar.R")
 # 1. Doe (design of experiments) ------------------------------------------
 # Building the matrix with the design of experiments (doe)
 
-setwd("/home/datawork-marbec-scenlab/OSMOSE/Criscely/ua_osmose_paper/outputs_uncertainty/sp0_10p")
+setwd("/home/datawork-marbec-scenlab/OSMOSE/Criscely/ua_osmose_paper/outputs_uncertainty/sp0_30p")
 
-doe = readRDS(file = "doe_sp0_10p.rds")
+doe = readRDS(file = "doe_sp0_30p.rds")
 
 # 2. run function ---------------------------------------------------------
 # The user has to provide a function to evaluate for each parameter vector
@@ -193,7 +193,7 @@ run_model = function(par, names, ...) {
 # 3. save outputs ---------------------------------------------------------
 
 start = date()
-fixed10p_sp0 = run_experiments(X = doe, FUN = run_model, names=doe$parameter, parallel=TRUE)
+fixed30p_sp0 = run_experiments(X = doe, FUN = run_model, names=doe$parameter, parallel=TRUE)
 end   = date()
 
-saveRDS(object = fixed10p_sp0, file = "fixed10p_sp0.rds")
+saveRDS(object = fixed30p_sp0, file = "fixed30p_sp0.rds")
