@@ -141,13 +141,12 @@ run_model = function(par, names, ...) {
   
   
   # Von Bertalanffy parameters: l0 perturbed instead of t0
-  t0.sp1   = as.numeric(modelConfig[modelConfig[,1] == "species.t0.sp1", 2])
-  K.sp1    = as.numeric(modelConfig[modelConfig[,1] == "species.K.sp1", 2])
-  Linf.sp1 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp1", 2])
+  K.sp1    = par[names(par) == "species.K.sp1"]
+  Linf.sp1 = par[names(par) == "species.lInf.sp1"]
   
   l0.sp1      = par[names(par) == "species.l0.sp1"]
-  newl0.sp1   = l0.sp1 * (Linf.sp1.per)
-  newt0.sp1   = t0.sp1 - (1 / K.sp1) * (log(1 - (newl0.sp1 / Linf.sp1)))
+  newl0.sp1   = l0.sp1 * (Linf.sp1)
+  newt0.sp1   = (1 / K.sp1) * (log(1 - (newl0.sp1 / Linf.sp1)))
   modelConfig[modelConfig[,1] == "species.t0.sp1", 2]  = newt0.sp1
   
   
@@ -157,7 +156,7 @@ run_model = function(par, names, ...) {
   
   # maturity size
   sx.sp1   = par[names(par) == "species.maturity.size.sp1"]
-  smat.sp1 = ((sx.sp1)*(Linf.sp1.per - l0.sp1)) + l0.sp1
+  smat.sp1 = ((sx.sp1)*(Linf.sp1.per - newl0.sp1)) + newl0.sp1
   modelConfig[modelConfig[,1] == "species.maturity.size.sp1", 2]  = smat.sp1
   
   # Length to weight relationship: condition factor perturbed

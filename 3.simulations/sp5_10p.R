@@ -121,14 +121,12 @@ run_model = function(par, names, ...) {
   
   
   # Von Bertalanffy parameters: l0 perturbed instead of t0
-  t0.sp5   = as.numeric(modelConfig[modelConfig[,1] == "species.t0.sp5", 2])
-  K.sp5    = as.numeric(modelConfig[modelConfig[,1] == "species.K.sp5", 2])
-  Linf.sp5 = as.numeric(modelConfig[modelConfig[,1] == "species.lInf.sp5", 2])
+  K.sp5    = par[names(par) == "species.K.sp5"]
+  Linf.sp5 = par[names(par) == "species.lInf.sp5"]
   
   l0.sp5      = par[names(par) == "species.l0.sp5"]
-  Linf.sp5.per= par[names(par) == "species.lInf.sp5"] 
-  newl0.sp5   = l0.sp5 * (Linf.sp5.per)
-  newt0.sp5   = t0.sp5 - (1 / K.sp5) * (log(1 - (newl0.sp5 / Linf.sp5)))
+  newl0.sp5   = l0.sp5 * (Linf.sp5)
+  newt0.sp5   = (1 / K.sp5) * (log(1 - (newl0.sp5 / Linf.sp5)))
   modelConfig[modelConfig[,1] == "species.t0.sp5", 2]  = newt0.sp5
   
   
@@ -137,8 +135,9 @@ run_model = function(par, names, ...) {
   modelConfig[modelConfig[,1] == "species.lInf.sp5", 2]           = par[names(par) == "species.lInf.sp5"]
   
   # maturity size
+  Linf.sp5.per= par[names(par) == "species.lInf.sp5"]
   sx.sp5   = par[names(par) == "species.maturity.size.sp5"]
-  smat.sp5 = ((sx.sp5)*(Linf.sp5.per - l0.sp5)) + l0.sp5
+  smat.sp5 = ((sx.sp5)*(Linf.sp5.per - newl0.sp5)) + newl0.sp5
   modelConfig[modelConfig[,1] == "species.maturity.size.sp5", 2]  = smat.sp5
   
   # Length to weight relationship: condition factor perturbed
