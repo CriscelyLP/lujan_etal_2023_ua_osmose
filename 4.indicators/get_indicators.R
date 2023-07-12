@@ -1,47 +1,42 @@
+
 rm(list = ls())
-
-#start.i = Sys.time()
-
-#path directioned to home
-setwd("/home1/datahome/clujanpa/uncertainty_processing")
 
 # Functions ---------------------------------------------------------------
 
+setwd("/home1/datahome/clujanpa/uncertainty_processing")
 source("indicators.R") 
 source("auxiliar_functions.R")
 
-# Create the file paths ---------------------------------------------------
+# Reading rds -------------------------------------------------------------
 
-scenario  = "20p"
+scenario  = "10p"
 species   = "sp0"
 
-setwd(paste0("/home1/scratch/clujanpa/rds_processing_1cm/sim_", scenario, "/"))
-
-outputRds = paste(species, scenario, sep = "_")
-outputDir = file.path("/home1/scratch/clujanpa/indicators", paste(species, scenario, sep = "_"))
+outputRds = file.path("/home/datawork-marbec-scenlab/OSMOSE/Criscely/ua_osmose_paper/outputs_uncertainty", paste(species, scenario, sep = "_"))
+outputRds = "sp0_10p"
 
 files     = list.files(path = outputRds, pattern = ".rds")
 nfiles    = length(files)
 
-# dir.create(outputDir)
+# Indicators outputs ------------------------------------------------------
 
 # indicator outputs
-#out_meanLength            = list()
-#out_meanTL                = list()
-#out_meanLifespan          = list()
-#out_biomassOverYield      = list()
-#out_mti                   = list()
-#out_slopeSizeSpectrum     = list()
-#out_interceptSizeSpectrum = list()
-#out_lfi20                 = list()
-#out_lfi30                 = list()
-#out_lfi40                 = list()
+out_meanLength            = list()
+out_meanTL                = list()
+out_meanLifespan          = list()
+out_biomassOverYield      = list()
+out_mti                   = list()
+out_slopeSizeSpectrum     = list()
+out_interceptSizeSpectrum = list()
+out_lfi20                 = list()
+out_lfi30                 = list()
+out_lfi40                 = list()
 
-out_biomass_sp             = list()
-out_abundance_sp           = list()
-out_yield_sp               = list()
-out_meanTL_sp              = list()
-out_meanLength_sp          = list()
+out_biomass_sp            = list()
+out_abundance_sp          = list()
+out_yield_sp              = list()
+out_meanTL_sp             = list()
+out_meanLength_sp         = list()
 
 for(i in seq_len(nfiles)) {
   
@@ -53,26 +48,26 @@ for(i in seq_len(nfiles)) {
   yield          = object$osmose.yield
   meanTL         = object$osmose.meanTL
   meanLength     = object$osmose.meanLength
-  #sizeSpectrum   = object$osmose.sizeSpectrum
-  #sizeSpectrumB  = object$osmose.sizeSpectrumB
+  sizeSpectrum   = object$osmose.sizeSpectrum
+  sizeSpectrumB  = object$osmose.sizeSpectrumB
   
-  #not used
+  #not used for now
   # yieldN         = object$osmose.yieldN
   # sizeSpectrumN  = object$osmose.sizeSpectrumN
   # sizeSpectrumC  = object$osmose.sizeSpectrumC #yield
   # sizeSpectrumY  = object$osmose.sizeSpectrumY #yieldN
   
-  #out_meanLength[[i]]            = .MeanLength(abundance, meanLength)
-  #out_meanTL[[i]]                = .MeanTL(biomass, meanTL)
-  #out_meanLifespan[[i]]          = .MeanLifespan(biomass)
-  #out_biomassOverYield[[i]]      = .BiomassOverYield(biomass, yield)
-  #out_mti[[i]]                   = .MTI(meanTL, yield)
-  #out_slopeSizeSpectrum[[i]]     = .FitSizeSpectrum(sizeSpectrum, output = "slope")
-  #out_interceptSizeSpectrum[[i]] = .FitSizeSpectrum(sizeSpectrum, output = "intercept")
-  #out_lfi20[[i]]                 = .LFI(biomass, sizeSpectrumB, thr = 20)
-  #out_lfi30[[i]]                 = .LFI(biomass, sizeSpectrumB, thr = 30)
-  #out_lfi40[[i]]                 = .LFI(biomass, sizeSpectrumB, thr = 40)
-  
+  out_meanLength[[i]]            = .MeanLength(abundance, meanLength)
+  out_meanTL[[i]]                = .MeanTL(biomass, meanTL)
+  out_meanLifespan[[i]]          = .MeanLifespan(biomass)
+  out_biomassOverYield[[i]]      = .BiomassOverYield(biomass, yield)
+  out_mti[[i]]                   = .MTI(meanTL, yield)
+  out_slopeSizeSpectrum[[i]]     = .FitSizeSpectrum(sizeSpectrum, output = "slope")
+  out_interceptSizeSpectrum[[i]] = .FitSizeSpectrum(sizeSpectrum, output = "intercept")
+  out_lfi20[[i]]                 = .LFI(biomass, sizeSpectrumB, thr = 20)
+  out_lfi30[[i]]                 = .LFI(biomass, sizeSpectrumB, thr = 30)
+  out_lfi40[[i]]                 = .LFI(biomass, sizeSpectrumB, thr = 40)
+
   out_biomass_sp[[i]]             = biomass
   out_abundance_sp[[i]]           = abundance
   out_yield_sp[[i]]               = yield
@@ -81,16 +76,24 @@ for(i in seq_len(nfiles)) {
   
 }
 
-#saveRDS(object = out_meanLength            , file = file.path(outputDir, paste(scenario, species, "meanLength.rds", sep = "_")))
-#saveRDS(object = out_meanTL                , file = file.path(outputDir, paste(scenario, species, "meanTL.rds", sep = "_")))
-#saveRDS(object = out_meanLifespan          , file = file.path(outputDir, paste(scenario, species, "meanLifespan.rds", sep = "_")))
-#saveRDS(object = out_biomassOverYield      , file = file.path(outputDir, paste(scenario, species, "biomassOverYield.rds", sep = "_")))
-#saveRDS(object = out_mti                   , file = file.path(outputDir, paste(scenario, species, "mti.rds", sep = "_")))
-#saveRDS(object = out_slopeSizeSpectrum     , file = file.path(outputDir, paste(scenario, species, "slopeSizeSpectrum.rds", sep = "_")))
-#saveRDS(object = out_interceptSizeSpectrum , file = file.path(outputDir, paste(scenario, species, "interceptSizeSpectrum.rds", sep = "_")))
-#saveRDS(object = out_lfi20                 , file = file.path(outputDir, paste(scenario, species, "lfi20.rds", sep = "_")))
-#saveRDS(object = out_lfi30                 , file = file.path(outputDir, paste(scenario, species, "lfi30.rds", sep = "_")))
-#saveRDS(object = out_lfi40                 , file = file.path(outputDir, paste(scenario, species, "lfi40.rds", sep = "_")))
+
+# X -----------------------------------------------------------------------
+
+
+
+ouputDir  = "/home/datawork-marbec-scenlab/OSMOSE/Criscely/ua_osmose_paper/indicators"
+setwd(file.path(ouputDir, paste(species, scenario, sep = "_")))
+
+saveRDS(object = out_meanLength            , file = file.path(outputDir, paste(scenario, species, "meanLength.rds", sep = "_")))
+saveRDS(object = out_meanTL                , file = file.path(outputDir, paste(scenario, species, "meanTL.rds", sep = "_")))
+saveRDS(object = out_meanLifespan          , file = file.path(outputDir, paste(scenario, species, "meanLifespan.rds", sep = "_")))
+saveRDS(object = out_biomassOverYield      , file = file.path(outputDir, paste(scenario, species, "biomassOverYield.rds", sep = "_")))
+saveRDS(object = out_mti                   , file = file.path(outputDir, paste(scenario, species, "mti.rds", sep = "_")))
+saveRDS(object = out_slopeSizeSpectrum     , file = file.path(outputDir, paste(scenario, species, "slopeSizeSpectrum.rds", sep = "_")))
+saveRDS(object = out_interceptSizeSpectrum , file = file.path(outputDir, paste(scenario, species, "interceptSizeSpectrum.rds", sep = "_")))
+saveRDS(object = out_lfi20                 , file = file.path(outputDir, paste(scenario, species, "lfi20.rds", sep = "_")))
+saveRDS(object = out_lfi30                 , file = file.path(outputDir, paste(scenario, species, "lfi30.rds", sep = "_")))
+saveRDS(object = out_lfi40                 , file = file.path(outputDir, paste(scenario, species, "lfi40.rds", sep = "_")))
 
 saveRDS(object = out_biomass_sp             , file = file.path(outputDir, paste(scenario, species, "biomass_sp.rds"   , sep = "_")))
 saveRDS(object = out_abundance_sp           , file = file.path(outputDir, paste(scenario, species, "abundance_sp.rds" , sep = "_")))
