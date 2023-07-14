@@ -1,21 +1,17 @@
 
-rm(list = ls())
+scenario  = "10p"
+species   = "sp0"
 
 # Functions ---------------------------------------------------------------
 
-setwd("/home1/datahome/clujanpa/uncertainty_processing")
+setwd("/home1/datahome/clujanpa/uncertainty_indicators")
 source("indicators.R") 
 source("auxiliar_functions.R")
 
 # Reading rds -------------------------------------------------------------
 
-scenario  = "10p"
-species   = "sp0"
-
 outputRds = file.path("/home/datawork-marbec-scenlab/OSMOSE/Criscely/ua_osmose_paper/outputs_uncertainty", paste(species, scenario, sep = "_"))
-outputRds = "sp0_10p"
-
-files     = list.files(path = outputRds, pattern = ".rds")
+files     = list.files(path = outputRds, pattern = "\\d.rds")
 nfiles    = length(files)
 
 # Indicators outputs ------------------------------------------------------
@@ -51,12 +47,6 @@ for(i in seq_len(nfiles)) {
   sizeSpectrum   = object$osmose.sizeSpectrum
   sizeSpectrumB  = object$osmose.sizeSpectrumB
   
-  #not used for now
-  # yieldN         = object$osmose.yieldN
-  # sizeSpectrumN  = object$osmose.sizeSpectrumN
-  # sizeSpectrumC  = object$osmose.sizeSpectrumC #yield
-  # sizeSpectrumY  = object$osmose.sizeSpectrumY #yieldN
-  
   out_meanLength[[i]]            = .MeanLength(abundance, meanLength)
   out_meanTL[[i]]                = .MeanTL(biomass, meanTL)
   out_meanLifespan[[i]]          = .MeanLifespan(biomass)
@@ -77,12 +67,9 @@ for(i in seq_len(nfiles)) {
 }
 
 
-# X -----------------------------------------------------------------------
+# Save outputs ------------------------------------------------------------
 
-
-
-ouputDir  = "/home/datawork-marbec-scenlab/OSMOSE/Criscely/ua_osmose_paper/indicators"
-setwd(file.path(ouputDir, paste(species, scenario, sep = "_")))
+outputDir  = file.path("/home/datawork-marbec-scenlab/OSMOSE/Criscely/ua_osmose_paper/indicators", paste(species, scenario, sep = "_"))
 
 saveRDS(object = out_meanLength            , file = file.path(outputDir, paste(scenario, species, "meanLength.rds", sep = "_")))
 saveRDS(object = out_meanTL                , file = file.path(outputDir, paste(scenario, species, "meanTL.rds", sep = "_")))
@@ -100,5 +87,3 @@ saveRDS(object = out_abundance_sp           , file = file.path(outputDir, paste(
 saveRDS(object = out_yield_sp               , file = file.path(outputDir, paste(scenario, species, "yield_sp.rds"     , sep = "_")))
 saveRDS(object = out_meanTL_sp              , file = file.path(outputDir, paste(scenario, species, "meanTL_sp.rds"    , sep = "_")))
 saveRDS(object = out_meanLength_sp          , file = file.path(outputDir, paste(scenario, species, "meanLength_sp.rds", sep = "_")))
-
-#end.i = Sys.time()
