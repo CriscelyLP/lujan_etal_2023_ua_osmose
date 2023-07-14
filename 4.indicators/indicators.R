@@ -83,7 +83,7 @@
 }
 
 #indicator 7
-.LFI = function(biomass, sizeSpectrumB, thr = 20){
+.LFI = function(biomass, sizeSpectrumB, thr){
   
   sizes = as.numeric(colnames(sizeSpectrumB$anchovy))
   marks = sizes + 0.5*mean(diff(sizes))
