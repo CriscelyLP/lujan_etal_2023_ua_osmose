@@ -41,6 +41,7 @@ baseLine_meanLength_sp         = as.data.frame(apply(baseLine_meanLength_sp     
 # Saving indicators -------------------------------------------------------
 
 outInd = "indicatorsMean_baseLine"
+dir.create(outInd)
 
 saveRDS(object = baseLine_meanLength            , file = file.path(outInd, paste0("baseLine_", "meanLength.rds")))
 saveRDS(object = baseLine_meanTL                , file = file.path(outInd, paste0("baseLine_", "meanTL.rds")))
