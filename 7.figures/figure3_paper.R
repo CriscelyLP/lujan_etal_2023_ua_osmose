@@ -2,35 +2,35 @@
 
 # Read OSMOSE indicators --------------------------------------------------
 
-sim10p_sp0 = readRDS("indicators/2.indicators_processed/sim10p_sp0.rds")
-sim10p_sp1 = readRDS("indicators/2.indicators_processed/sim10p_sp1.rds")
-sim10p_sp2 = readRDS("indicators/2.indicators_processed/sim10p_sp2.rds")
-sim10p_sp3 = readRDS("indicators/2.indicators_processed/sim10p_sp3.rds")
-sim10p_sp4 = readRDS("indicators/2.indicators_processed/sim10p_sp4.rds")
-sim10p_sp5 = readRDS("indicators/2.indicators_processed/sim10p_sp5.rds")
-sim10p_sp6 = readRDS("indicators/2.indicators_processed/sim10p_sp6.rds")
-sim10p_sp7 = readRDS("indicators/2.indicators_processed/sim10p_sp7.rds")
-sim10p_sp8 = readRDS("indicators/2.indicators_processed/sim10p_sp8.rds")
+sim10p_sp0 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp0.rds")
+sim10p_sp1 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp1.rds")
+sim10p_sp2 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp2.rds")
+sim10p_sp3 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp3.rds")
+sim10p_sp4 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp4.rds")
+sim10p_sp5 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp5.rds")
+sim10p_sp6 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp6.rds")
+sim10p_sp7 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp7.rds")
+sim10p_sp8 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp8.rds")
 
-sim20p_sp0 = readRDS("indicators/2.indicators_processed/sim20p_sp0.rds")
-sim20p_sp1 = readRDS("indicators/2.indicators_processed/sim20p_sp1.rds")
-sim20p_sp2 = readRDS("indicators/2.indicators_processed/sim20p_sp2.rds")
-sim20p_sp3 = readRDS("indicators/2.indicators_processed/sim20p_sp3.rds")
-sim20p_sp4 = readRDS("indicators/2.indicators_processed/sim20p_sp4.rds")
-sim20p_sp5 = readRDS("indicators/2.indicators_processed/sim20p_sp5.rds")
-sim20p_sp6 = readRDS("indicators/2.indicators_processed/sim20p_sp6.rds")
-sim20p_sp7 = readRDS("indicators/2.indicators_processed/sim20p_sp7.rds")
-sim20p_sp8 = readRDS("indicators/2.indicators_processed/sim20p_sp8.rds")
+sim20p_sp0 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp0.rds")
+sim20p_sp1 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp1.rds")
+sim20p_sp2 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp2.rds")
+sim20p_sp3 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp3.rds")
+sim20p_sp4 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp4.rds")
+sim20p_sp5 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp5.rds")
+sim20p_sp6 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp6.rds")
+sim20p_sp7 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp7.rds")
+sim20p_sp8 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp8.rds")
 
-sim30p_sp0 = readRDS("indicators/2.indicators_processed/sim30p_sp0.rds")
-sim30p_sp1 = readRDS("indicators/2.indicators_processed/sim30p_sp1.rds")
-sim30p_sp2 = readRDS("indicators/2.indicators_processed/sim30p_sp2.rds")
-sim30p_sp3 = readRDS("indicators/2.indicators_processed/sim30p_sp3.rds")
-sim30p_sp4 = readRDS("indicators/2.indicators_processed/sim30p_sp4.rds")
-sim30p_sp5 = readRDS("indicators/2.indicators_processed/sim30p_sp5.rds")
-sim30p_sp6 = readRDS("indicators/2.indicators_processed/sim30p_sp6.rds")
-sim30p_sp7 = readRDS("indicators/2.indicators_processed/sim30p_sp7.rds")
-sim30p_sp8 = readRDS("indicators/2.indicators_processed/sim30p_sp8.rds")
+sim30p_sp0 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp0.rds")
+sim30p_sp1 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp1.rds")
+sim30p_sp2 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp2.rds")
+sim30p_sp3 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp3.rds")
+sim30p_sp4 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp4.rds")
+sim30p_sp5 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp5.rds")
+sim30p_sp6 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp6.rds")
+sim30p_sp7 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp7.rds")
+sim30p_sp8 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp8.rds")
 
 # Figure ------------------------------------------------------------------
 
@@ -39,7 +39,7 @@ figure3 = function(sim, ind, titlePlot, axis1 = TRUE, axis2 = TRUE, ylim, nino =
   sim = sim[[ind]]*100
   sim = t(sim)
   quantiles_x = apply(sim, 2, quantile, probs = c(0.025, 0.975), na.rm = TRUE)
-  mean_x      = apply(sim, 2, mean) #median
+  mean_x      = apply(sim, 2, mean, na.rm = TRUE) #median
   
   matplot(t(quantiles_x), type = "l", lty = 3, col = "gray", ylab = "", axes = FALSE, ylim = ylim)
   
@@ -73,25 +73,49 @@ figure3 = function(sim, ind, titlePlot, axis1 = TRUE, axis2 = TRUE, ylim, nino =
   return(invisible())
 }
 
+# 20P ---------------------------------------------------------------------
+
 
 #Ind 2 - LFI40 - 20P
-png(filename = "indicators/plots/figures_chapter/3.Fig3_lfi40_20p_new.png", width = 1200, height = 800, pointsize = 15)
+png(filename = "paper_results/plots/3.Fig3_lfi40_20p.png", width = 1200, height = 800, pointsize = 15)
 par(mfrow = c(3, 3))
 par(cex   = 1)
 par(mar   = c(1,3,0,0.9), oma = c(1.5,2.7,2.5,0.5))
 
-figure3(sim = sim20p_sp0$relativeChange, ind = "lfi40", titlePlot = "ANCHOVY"       ,  ylim = c(-50,50), axis1 = FALSE, lwd = 2)
-figure3(sim = sim20p_sp1$relativeChange, ind = "lfi40", titlePlot = "HAKE"          ,  ylim = c(-50,50), axis1 = FALSE, lwd = 2)
-figure3(sim = sim20p_sp2$relativeChange, ind = "lfi40", titlePlot = "SARDINE"       ,  ylim = c(-50,50), axis1 = FALSE, lwd = 2)
-figure3(sim = sim20p_sp3$relativeChange, ind = "lfi40", titlePlot = "JACK MACKEREL" ,  ylim = c(-300,300), axis1 = FALSE, lwd = 2)
-figure3(sim = sim20p_sp4$relativeChange, ind = "lfi40", titlePlot = "CHUB MACKEREL" ,  ylim = c(-50,50), axis1 = FALSE, lwd = 2)
-figure3(sim = sim20p_sp5$relativeChange, ind = "lfi40", titlePlot = "MESOPELAGICS"  ,  ylim = c(-100,100), axis1 = FALSE, lwd = 2)
-figure3(sim = sim20p_sp6$relativeChange, ind = "lfi40", titlePlot = "MUNIDA"        ,  ylim = c(-20,20), lwd = 2)
-figure3(sim = sim20p_sp7$relativeChange, ind = "lfi40", titlePlot = "HUMBOLDT SQUID",  ylim = c(-2850,2850),lwd = 2)
-figure3(sim = sim20p_sp8$relativeChange, ind = "lfi40", titlePlot = "EUPHAUSIIDS"   ,  ylim = c(-500,500), lwd = 2)
+figure3(sim = sim20p_sp0$relativeChange, ind = "lfi40", titlePlot = "ANCHOVY"       ,  ylim = c(-80,80)    , axis1 = FALSE, lwd = 2)
+figure3(sim = sim20p_sp1$relativeChange, ind = "lfi40", titlePlot = "HAKE"          ,  ylim = c(-100,100)  , axis1 = FALSE, lwd = 2)
+figure3(sim = sim20p_sp2$relativeChange, ind = "lfi40", titlePlot = "SARDINE"       ,  ylim = c(-120,120)  , axis1 = FALSE, lwd = 2)
+figure3(sim = sim20p_sp3$relativeChange, ind = "lfi40", titlePlot = "JACK MACKEREL" ,  ylim = c(-300,300)  , axis1 = FALSE, lwd = 2)
+figure3(sim = sim20p_sp4$relativeChange, ind = "lfi40", titlePlot = "CHUB MACKEREL" ,  ylim = c(-60,60)    , axis1 = FALSE, lwd = 2)
+figure3(sim = sim20p_sp5$relativeChange, ind = "lfi40", titlePlot = "MESOPELAGICS"  ,  ylim = c(-120,120)  , axis1 = FALSE, lwd = 2)
+figure3(sim = sim20p_sp6$relativeChange, ind = "lfi40", titlePlot = "MUNIDA"        ,  ylim = c(-30,30)    , lwd = 2)
+figure3(sim = sim20p_sp7$relativeChange, ind = "lfi40", titlePlot = "HUMBOLDT SQUID",  ylim = c(-3500,3500), lwd = 2)
+figure3(sim = sim20p_sp8$relativeChange, ind = "lfi40", titlePlot = "EUPHAUSIIDS"   ,  ylim = c(-200,200)  , lwd = 2)
 
 mtext(text = "LFI40 IN SCENARIO 20%" , side = 3, line = 1, cex = 1.8, outer = TRUE)
 mtext(text = "RELATIVE CHANGE (%)"   , side = 2, line = 0.9, cex = 1.5, outer = TRUE)
 
 dev.off()
 
+# 30P ---------------------------------------------------------------------
+
+#Ind 2 - LFI40 - 30P
+png(filename = "paper_results/plots/3.Fig3_lfi40_30p.png", width = 1200, height = 800, pointsize = 15)
+par(mfrow = c(3, 3))
+par(cex   = 1)
+par(mar   = c(1,3,0,0.9), oma = c(1.5,2.7,2.5,0.5))
+
+figure3(sim = sim30p_sp0$relativeChange, ind = "lfi40", titlePlot = "ANCHOVY"       ,  ylim = c(-80,80)    , axis1 = FALSE, lwd = 2)
+figure3(sim = sim30p_sp1$relativeChange, ind = "lfi40", titlePlot = "HAKE"          ,  ylim = c(-100,100)  , axis1 = FALSE, lwd = 2)
+figure3(sim = sim30p_sp2$relativeChange, ind = "lfi40", titlePlot = "SARDINE"       ,  ylim = c(-120,120)  , axis1 = FALSE, lwd = 2)
+figure3(sim = sim30p_sp3$relativeChange, ind = "lfi40", titlePlot = "JACK MACKEREL" ,  ylim = c(-300,300)  , axis1 = FALSE, lwd = 2)
+figure3(sim = sim30p_sp4$relativeChange, ind = "lfi40", titlePlot = "CHUB MACKEREL" ,  ylim = c(-60,60)    , axis1 = FALSE, lwd = 2)
+figure3(sim = sim30p_sp5$relativeChange, ind = "lfi40", titlePlot = "MESOPELAGICS"  ,  ylim = c(-120,120)  , axis1 = FALSE, lwd = 2)
+figure3(sim = sim30p_sp6$relativeChange, ind = "lfi40", titlePlot = "MUNIDA"        ,  ylim = c(-30,30)    , lwd = 2)
+figure3(sim = sim30p_sp7$relativeChange, ind = "lfi40", titlePlot = "HUMBOLDT SQUID",  ylim = c(-3500,3500), lwd = 2)
+figure3(sim = sim30p_sp8$relativeChange, ind = "lfi40", titlePlot = "EUPHAUSIIDS"   ,  ylim = c(-200,200)  , lwd = 2)
+
+mtext(text = "LFI40 IN SCENARIO 30%" , side = 3, line = 1, cex = 1.8, outer = TRUE)
+mtext(text = "RELATIVE CHANGE (%)"   , side = 2, line = 0.9, cex = 1.5, outer = TRUE)
+
+dev.off()
