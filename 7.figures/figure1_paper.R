@@ -2,35 +2,35 @@
 
 # Read OSMOSE indicators --------------------------------------------------
 
-sim10p_sp0 = readRDS("indicators_results/2.indicators_processed/sim10p_sp0.rds")
-sim10p_sp1 = readRDS("indicators_results/2.indicators_processed/sim10p_sp1.rds")
-sim10p_sp2 = readRDS("indicators_results/2.indicators_processed/sim10p_sp2.rds")
-sim10p_sp3 = readRDS("indicators_results/2.indicators_processed/sim10p_sp3.rds")
-sim10p_sp4 = readRDS("indicators_results/2.indicators_processed/sim10p_sp4.rds")
-sim10p_sp5 = readRDS("indicators_results/2.indicators_processed/sim10p_sp5.rds")
-sim10p_sp6 = readRDS("indicators_results/2.indicators_processed/sim10p_sp6.rds")
-sim10p_sp7 = readRDS("indicators_results/2.indicators_processed/sim10p_sp7.rds")
-sim10p_sp8 = readRDS("indicators_results/2.indicators_processed/sim10p_sp8.rds")
+sim10p_sp0 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp0.rds")
+sim10p_sp1 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp1.rds")
+sim10p_sp2 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp2.rds")
+sim10p_sp3 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp3.rds")
+sim10p_sp4 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp4.rds")
+sim10p_sp5 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp5.rds")
+sim10p_sp6 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp6.rds")
+sim10p_sp7 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp7.rds")
+sim10p_sp8 = readRDS("paper_results/indicators_results/2.indicators_processed/sim10p_sp8.rds")
 
-sim20p_sp0 = readRDS("indicators_results/2.indicators_processed/sim20p_sp0.rds")
-sim20p_sp1 = readRDS("indicators_results/2.indicators_processed/sim20p_sp1.rds")
-sim20p_sp2 = readRDS("indicators_results/2.indicators_processed/sim20p_sp2.rds")
-sim20p_sp3 = readRDS("indicators_results/2.indicators_processed/sim20p_sp3.rds")
-sim20p_sp4 = readRDS("indicators_results/2.indicators_processed/sim20p_sp4.rds")
-sim20p_sp5 = readRDS("indicators_results/2.indicators_processed/sim20p_sp5.rds")
-sim20p_sp6 = readRDS("indicators_results/2.indicators_processed/sim20p_sp6.rds")
-sim20p_sp7 = readRDS("indicators_results/2.indicators_processed/sim20p_sp7.rds")
-sim20p_sp8 = readRDS("indicators_results/2.indicators_processed/sim20p_sp8.rds")
+sim20p_sp0 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp0.rds")
+sim20p_sp1 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp1.rds")
+sim20p_sp2 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp2.rds")
+sim20p_sp3 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp3.rds")
+sim20p_sp4 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp4.rds")
+sim20p_sp5 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp5.rds")
+sim20p_sp6 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp6.rds")
+sim20p_sp7 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp7.rds")
+sim20p_sp8 = readRDS("paper_results/indicators_results/2.indicators_processed/sim20p_sp8.rds")
 
-sim30p_sp0 = readRDS("indicators_results/2.indicators_processed/sim30p_sp0.rds")
-sim30p_sp1 = readRDS("indicators_results/2.indicators_processed/sim30p_sp1.rds")
-sim30p_sp2 = readRDS("indicators_results/2.indicators_processed/sim30p_sp2.rds")
-sim30p_sp3 = readRDS("indicators_results/2.indicators_processed/sim30p_sp3.rds")
-sim30p_sp4 = readRDS("indicators_results/2.indicators_processed/sim30p_sp4.rds")
-sim30p_sp5 = readRDS("indicators_results/2.indicators_processed/sim30p_sp5.rds")
-sim30p_sp6 = readRDS("indicators_results/2.indicators_processed/sim30p_sp6.rds")
-sim30p_sp7 = readRDS("indicators_results/2.indicators_processed/sim30p_sp7.rds")
-sim30p_sp8 = readRDS("indicators_results/2.indicators_processed/sim30p_sp8.rds")
+sim30p_sp0 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp0.rds")
+sim30p_sp1 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp1.rds")
+sim30p_sp2 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp2.rds")
+sim30p_sp3 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp3.rds")
+sim30p_sp4 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp4.rds")
+sim30p_sp5 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp5.rds")
+sim30p_sp6 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp6.rds")
+sim30p_sp7 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp7.rds")
+sim30p_sp8 = readRDS("paper_results/indicators_results/2.indicators_processed/sim30p_sp8.rds")
 
 
 # Figure1A ----------------------------------------------------------------
@@ -82,9 +82,9 @@ figure1_rc = function(sim10p_sp0, sim10p_sp1, sim10p_sp2, sim10p_sp3, sim10p_sp4
   
   if(is.null(lim)){lim = c(-100,100)} else { lim = lim }
   
-  distance = (27:1) + 0.17*c(-0.7,0.7)
+  distance = (27:1) + 0.17*c(-0.7, 0, 0.7)
   
-  boxplot(sim10p_sp0[,sp]*100, at = distance[1] , outline = FALSE, axes = FALSE, ylim = lim, col = "white" , xlim = c(0.5,18.5), horizontal = TRUE, width = 1.5)
+  boxplot(sim10p_sp0[,sp]*100, at = distance[1] , outline = FALSE, axes = FALSE, ylim = lim, col = "white" , xlim = c(0.5,28.5), horizontal = TRUE, width = 1.5)
   boxplot(sim20p_sp0[,sp]*100, at = distance[2] , outline = FALSE, axes = FALSE, add = TRUE, col = "gray77", horizontal = TRUE, width = 1.5)
   boxplot(sim30p_sp0[,sp]*100, at = distance[3] , outline = FALSE, axes = FALSE, add = TRUE, col = "gray30", horizontal = TRUE, width = 1.5)
   
@@ -124,16 +124,16 @@ figure1_rc = function(sim10p_sp0, sim10p_sp1, sim10p_sp2, sim10p_sp3, sim10p_sp4
   box(...)
   
   if(isTRUE(axis2)){
-    axis(2, at = seq(from = 1.5, by = 2, length.out = 9), labels = speciesName, cex.axis = 0.7, las = 2)
+    axis(2, at = seq(from = 2, by = 3, length.out = 9), labels = speciesName, cex.axis = 0.8, las = 2)
   } else {
-    axis(2, at = seq(from = 1.5, by = 2, length.out = 9), labels = FALSE)
+    axis(2, at = seq(from = 2, by = 3, length.out = 9), labels = FALSE)
   }
   
   if(isTRUE(axis1)){
     axis1Default = axTicks(1)
     axis(1, at = axis1Default, labels = paste0(axis1Default, "%"))} 
   
-  mtext(text = titlePlot, side = 3, cex = 0.7, adj = 0.05)
+  mtext(text = titlePlot, side = 3, cex = 1, adj = 0.05)
   
   return(invisible())
 }
@@ -146,61 +146,61 @@ speciesAbbre     = rev(c("AN", "HA", "SA", "JM", "CM", "ME", "MU", "HS", "EU"))
 coloursBox       = c("black", "blue", "green4", "blueviolet", "coral")
 
 
-png(filename = "indicators/plots/figures_chapter/1.figure1A.png", width = 1200, height = 1800, pointsize = 24)
+png(filename = "paper_results/plots/1.figure1A.png", width = 1400, height = 2000, pointsize = 25)
 par(mfrow = c(5, 2))
 par(cex   = 1)
-par(mar   = c(2.5,2.5,1,0), oma = c(3,4,1,0.5))
+par(mar   = c(3.5,3.5,1,0), oma = c(4,4,1,0.8))
 figure1_rc(sim10p_sp0 = biomass_rc_sp0_10p, sim10p_sp1 = biomass_rc_sp1_10p, sim10p_sp2 = biomass_rc_sp2_10p, sim10p_sp3 = biomass_rc_sp3_10p, sim10p_sp4 = biomass_rc_sp4_10p, sim10p_sp5 = biomass_rc_sp5_10p, sim10p_sp6 = biomass_rc_sp6_10p, sim10p_sp7 = biomass_rc_sp7_10p, sim10p_sp8 = biomass_rc_sp8_10p,
            sim20p_sp0 = biomass_rc_sp0_20p, sim20p_sp1 = biomass_rc_sp1_20p, sim20p_sp2 = biomass_rc_sp2_20p, sim20p_sp3 = biomass_rc_sp3_20p, sim20p_sp4 = biomass_rc_sp4_20p, sim20p_sp5 = biomass_rc_sp5_20p, sim20p_sp6 = biomass_rc_sp6_20p, sim20p_sp7 = biomass_rc_sp7_20p, sim20p_sp8 = biomass_rc_sp8_20p,
            sim30p_sp0 = biomass_rc_sp0_30p, sim30p_sp1 = biomass_rc_sp1_30p, sim30p_sp2 = biomass_rc_sp2_30p, sim30p_sp3 = biomass_rc_sp3_30p, sim30p_sp4 = biomass_rc_sp4_30p, sim30p_sp5 = biomass_rc_sp5_30p, sim30p_sp6 = biomass_rc_sp6_30p, sim30p_sp7 = biomass_rc_sp7_30p, sim30p_sp8 = biomass_rc_sp8_30p,
-           sp = 1, titlePlot = "UNCERTAINTY ON ANCHOVY"       , lim = c(-100,100), col = coloursBox[1], lwd = 2, speciesName = speciesComplete)
+           sp = 1, titlePlot = "UNCERTAINTY ON ANCHOVY"       , lim = c(-200,200), col = coloursBox[1], lwd = 2, speciesName = speciesComplete)
 
 figure1_rc(sim10p_sp0 = biomass_rc_sp0_10p, sim10p_sp1 = biomass_rc_sp1_10p, sim10p_sp2 = biomass_rc_sp2_10p, sim10p_sp3 = biomass_rc_sp3_10p, sim10p_sp4 = biomass_rc_sp4_10p, sim10p_sp5 = biomass_rc_sp5_10p, sim10p_sp6 = biomass_rc_sp6_10p, sim10p_sp7 = biomass_rc_sp7_10p, sim10p_sp8 = biomass_rc_sp8_10p,
            sim20p_sp0 = biomass_rc_sp0_20p, sim20p_sp1 = biomass_rc_sp1_20p, sim20p_sp2 = biomass_rc_sp2_20p, sim20p_sp3 = biomass_rc_sp3_20p, sim20p_sp4 = biomass_rc_sp4_20p, sim20p_sp5 = biomass_rc_sp5_20p, sim20p_sp6 = biomass_rc_sp6_20p, sim20p_sp7 = biomass_rc_sp7_20p, sim20p_sp8 = biomass_rc_sp8_20p,
            sim30p_sp0 = biomass_rc_sp0_30p, sim30p_sp1 = biomass_rc_sp1_30p, sim30p_sp2 = biomass_rc_sp2_30p, sim30p_sp3 = biomass_rc_sp3_30p, sim30p_sp4 = biomass_rc_sp4_30p, sim30p_sp5 = biomass_rc_sp5_30p, sim30p_sp6 = biomass_rc_sp6_30p, sim30p_sp7 = biomass_rc_sp7_30p, sim30p_sp8 = biomass_rc_sp8_30p,
-           sp = 2, titlePlot = "UNCERTAINTY ON HAKE"          , lim = c(-200,200), col = coloursBox[1], lwd = 2, speciesName = speciesAbbre)
+           sp = 2, titlePlot = "UNCERTAINTY ON HAKE"          , lim = c(-750,750), col = coloursBox[1], lwd = 2, speciesName = speciesAbbre)
 
 figure1_rc(sim10p_sp0 = biomass_rc_sp0_10p, sim10p_sp1 = biomass_rc_sp1_10p, sim10p_sp2 = biomass_rc_sp2_10p, sim10p_sp3 = biomass_rc_sp3_10p, sim10p_sp4 = biomass_rc_sp4_10p, sim10p_sp5 = biomass_rc_sp5_10p, sim10p_sp6 = biomass_rc_sp6_10p, sim10p_sp7 = biomass_rc_sp7_10p, sim10p_sp8 = biomass_rc_sp8_10p,
            sim20p_sp0 = biomass_rc_sp0_20p, sim20p_sp1 = biomass_rc_sp1_20p, sim20p_sp2 = biomass_rc_sp2_20p, sim20p_sp3 = biomass_rc_sp3_20p, sim20p_sp4 = biomass_rc_sp4_20p, sim20p_sp5 = biomass_rc_sp5_20p, sim20p_sp6 = biomass_rc_sp6_20p, sim20p_sp7 = biomass_rc_sp7_20p, sim20p_sp8 = biomass_rc_sp8_20p,
            sim30p_sp0 = biomass_rc_sp0_30p, sim30p_sp1 = biomass_rc_sp1_30p, sim30p_sp2 = biomass_rc_sp2_30p, sim30p_sp3 = biomass_rc_sp3_30p, sim30p_sp4 = biomass_rc_sp4_30p, sim30p_sp5 = biomass_rc_sp5_30p, sim30p_sp6 = biomass_rc_sp6_30p, sim30p_sp7 = biomass_rc_sp7_30p, sim30p_sp8 = biomass_rc_sp8_30p,
-           sp = 3, titlePlot = "UNCERTAINTY ON SARDINE"       , lim = c(-350,350), col = coloursBox[1], lwd = 2, speciesName = speciesComplete)
+           sp = 3, titlePlot = "UNCERTAINTY ON SARDINE"       , lim = c(-15000,15000), col = coloursBox[1], lwd = 2, speciesName = speciesComplete)
 
 figure1_rc(sim10p_sp0 = biomass_rc_sp0_10p, sim10p_sp1 = biomass_rc_sp1_10p, sim10p_sp2 = biomass_rc_sp2_10p, sim10p_sp3 = biomass_rc_sp3_10p, sim10p_sp4 = biomass_rc_sp4_10p, sim10p_sp5 = biomass_rc_sp5_10p, sim10p_sp6 = biomass_rc_sp6_10p, sim10p_sp7 = biomass_rc_sp7_10p, sim10p_sp8 = biomass_rc_sp8_10p,
            sim20p_sp0 = biomass_rc_sp0_20p, sim20p_sp1 = biomass_rc_sp1_20p, sim20p_sp2 = biomass_rc_sp2_20p, sim20p_sp3 = biomass_rc_sp3_20p, sim20p_sp4 = biomass_rc_sp4_20p, sim20p_sp5 = biomass_rc_sp5_20p, sim20p_sp6 = biomass_rc_sp6_20p, sim20p_sp7 = biomass_rc_sp7_20p, sim20p_sp8 = biomass_rc_sp8_20p,
            sim30p_sp0 = biomass_rc_sp0_30p, sim30p_sp1 = biomass_rc_sp1_30p, sim30p_sp2 = biomass_rc_sp2_30p, sim30p_sp3 = biomass_rc_sp3_30p, sim30p_sp4 = biomass_rc_sp4_30p, sim30p_sp5 = biomass_rc_sp5_30p, sim30p_sp6 = biomass_rc_sp6_30p, sim30p_sp7 = biomass_rc_sp7_30p, sim30p_sp8 = biomass_rc_sp8_30p,
-           sp = 4, titlePlot = "UNCERTAINTY ON JACK MACKEREL" , lim = c(-180,180), col = coloursBox[1], lwd = 2, speciesName = speciesAbbre)
+           sp = 4, titlePlot = "UNCERTAINTY ON JACK MACKEREL" , lim = c(-200,200), col = coloursBox[1], lwd = 2, speciesName = speciesAbbre)
 
 figure1_rc(sim10p_sp0 = biomass_rc_sp0_10p, sim10p_sp1 = biomass_rc_sp1_10p, sim10p_sp2 = biomass_rc_sp2_10p, sim10p_sp3 = biomass_rc_sp3_10p, sim10p_sp4 = biomass_rc_sp4_10p, sim10p_sp5 = biomass_rc_sp5_10p, sim10p_sp6 = biomass_rc_sp6_10p, sim10p_sp7 = biomass_rc_sp7_10p, sim10p_sp8 = biomass_rc_sp8_10p,
            sim20p_sp0 = biomass_rc_sp0_20p, sim20p_sp1 = biomass_rc_sp1_20p, sim20p_sp2 = biomass_rc_sp2_20p, sim20p_sp3 = biomass_rc_sp3_20p, sim20p_sp4 = biomass_rc_sp4_20p, sim20p_sp5 = biomass_rc_sp5_20p, sim20p_sp6 = biomass_rc_sp6_20p, sim20p_sp7 = biomass_rc_sp7_20p, sim20p_sp8 = biomass_rc_sp8_20p,
            sim30p_sp0 = biomass_rc_sp0_30p, sim30p_sp1 = biomass_rc_sp1_30p, sim30p_sp2 = biomass_rc_sp2_30p, sim30p_sp3 = biomass_rc_sp3_30p, sim30p_sp4 = biomass_rc_sp4_30p, sim30p_sp5 = biomass_rc_sp5_30p, sim30p_sp6 = biomass_rc_sp6_30p, sim30p_sp7 = biomass_rc_sp7_30p, sim30p_sp8 = biomass_rc_sp8_30p,
-           sp = 5, titlePlot = "UNCERTAINTY ON CHUB MACKEREL" , lim = c(-190,190), col = coloursBox[1], lwd = 2, speciesName = speciesComplete)
+           sp = 5, titlePlot = "UNCERTAINTY ON CHUB MACKEREL" , lim = c(-200,200), col = coloursBox[1], lwd = 2, speciesName = speciesComplete)
 
 figure1_rc(sim10p_sp0 = biomass_rc_sp0_10p, sim10p_sp1 = biomass_rc_sp1_10p, sim10p_sp2 = biomass_rc_sp2_10p, sim10p_sp3 = biomass_rc_sp3_10p, sim10p_sp4 = biomass_rc_sp4_10p, sim10p_sp5 = biomass_rc_sp5_10p, sim10p_sp6 = biomass_rc_sp6_10p, sim10p_sp7 = biomass_rc_sp7_10p, sim10p_sp8 = biomass_rc_sp8_10p,
            sim20p_sp0 = biomass_rc_sp0_20p, sim20p_sp1 = biomass_rc_sp1_20p, sim20p_sp2 = biomass_rc_sp2_20p, sim20p_sp3 = biomass_rc_sp3_20p, sim20p_sp4 = biomass_rc_sp4_20p, sim20p_sp5 = biomass_rc_sp5_20p, sim20p_sp6 = biomass_rc_sp6_20p, sim20p_sp7 = biomass_rc_sp7_20p, sim20p_sp8 = biomass_rc_sp8_20p,
            sim30p_sp0 = biomass_rc_sp0_30p, sim30p_sp1 = biomass_rc_sp1_30p, sim30p_sp2 = biomass_rc_sp2_30p, sim30p_sp3 = biomass_rc_sp3_30p, sim30p_sp4 = biomass_rc_sp4_30p, sim30p_sp5 = biomass_rc_sp5_30p, sim30p_sp6 = biomass_rc_sp6_30p, sim30p_sp7 = biomass_rc_sp7_30p, sim30p_sp8 = biomass_rc_sp8_30p,
-           sp = 6, titlePlot = "UNCERTAINTY ON MESOPELAGICS"  , lim = c(-350,350), col = coloursBox[1], lwd = 2, speciesName = speciesAbbre)
+           sp = 6, titlePlot = "UNCERTAINTY ON MESOPELAGICS"  , lim = c(-250,250), col = coloursBox[1], lwd = 2, speciesName = speciesAbbre)
 
 figure1_rc(sim10p_sp0 = biomass_rc_sp0_10p, sim10p_sp1 = biomass_rc_sp1_10p, sim10p_sp2 = biomass_rc_sp2_10p, sim10p_sp3 = biomass_rc_sp3_10p, sim10p_sp4 = biomass_rc_sp4_10p, sim10p_sp5 = biomass_rc_sp5_10p, sim10p_sp6 = biomass_rc_sp6_10p, sim10p_sp7 = biomass_rc_sp7_10p, sim10p_sp8 = biomass_rc_sp8_10p,
            sim20p_sp0 = biomass_rc_sp0_20p, sim20p_sp1 = biomass_rc_sp1_20p, sim20p_sp2 = biomass_rc_sp2_20p, sim20p_sp3 = biomass_rc_sp3_20p, sim20p_sp4 = biomass_rc_sp4_20p, sim20p_sp5 = biomass_rc_sp5_20p, sim20p_sp6 = biomass_rc_sp6_20p, sim20p_sp7 = biomass_rc_sp7_20p, sim20p_sp8 = biomass_rc_sp8_20p,
            sim30p_sp0 = biomass_rc_sp0_30p, sim30p_sp1 = biomass_rc_sp1_30p, sim30p_sp2 = biomass_rc_sp2_30p, sim30p_sp3 = biomass_rc_sp3_30p, sim30p_sp4 = biomass_rc_sp4_30p, sim30p_sp5 = biomass_rc_sp5_30p, sim30p_sp6 = biomass_rc_sp6_30p, sim30p_sp7 = biomass_rc_sp7_30p, sim30p_sp8 = biomass_rc_sp8_30p,
-           sp = 7, titlePlot = "UNCERTAINTY ON MUNIDA"        , lim = c(-100,100), col = coloursBox[1], lwd = 2, speciesName = speciesComplete)
+           sp = 7, titlePlot = "UNCERTAINTY ON MUNIDA"        , lim = c(-200,200), col = coloursBox[1], lwd = 2, speciesName = speciesComplete)
 
 figure1_rc(sim10p_sp0 = biomass_rc_sp0_10p, sim10p_sp1 = biomass_rc_sp1_10p, sim10p_sp2 = biomass_rc_sp2_10p, sim10p_sp3 = biomass_rc_sp3_10p, sim10p_sp4 = biomass_rc_sp4_10p, sim10p_sp5 = biomass_rc_sp5_10p, sim10p_sp6 = biomass_rc_sp6_10p, sim10p_sp7 = biomass_rc_sp7_10p, sim10p_sp8 = biomass_rc_sp8_10p,
            sim20p_sp0 = biomass_rc_sp0_20p, sim20p_sp1 = biomass_rc_sp1_20p, sim20p_sp2 = biomass_rc_sp2_20p, sim20p_sp3 = biomass_rc_sp3_20p, sim20p_sp4 = biomass_rc_sp4_20p, sim20p_sp5 = biomass_rc_sp5_20p, sim20p_sp6 = biomass_rc_sp6_20p, sim20p_sp7 = biomass_rc_sp7_20p, sim20p_sp8 = biomass_rc_sp8_20p,
            sim30p_sp0 = biomass_rc_sp0_30p, sim30p_sp1 = biomass_rc_sp1_30p, sim30p_sp2 = biomass_rc_sp2_30p, sim30p_sp3 = biomass_rc_sp3_30p, sim30p_sp4 = biomass_rc_sp4_30p, sim30p_sp5 = biomass_rc_sp5_30p, sim30p_sp6 = biomass_rc_sp6_30p, sim30p_sp7 = biomass_rc_sp7_30p, sim30p_sp8 = biomass_rc_sp8_30p,
-           sp = 8, titlePlot = "UNCERTAINTY ON HUMBOLDT SQUID", lim = c(-480,480), col = coloursBox[1], lwd = 2, speciesName = speciesAbbre)
+           sp = 8, titlePlot = "UNCERTAINTY ON HUMBOLDT SQUID", lim = c(-2200,2200), col = coloursBox[1], lwd = 2, speciesName = speciesAbbre)
 
 figure1_rc(sim10p_sp0 = biomass_rc_sp0_10p, sim10p_sp1 = biomass_rc_sp1_10p, sim10p_sp2 = biomass_rc_sp2_10p, sim10p_sp3 = biomass_rc_sp3_10p, sim10p_sp4 = biomass_rc_sp4_10p, sim10p_sp5 = biomass_rc_sp5_10p, sim10p_sp6 = biomass_rc_sp6_10p, sim10p_sp7 = biomass_rc_sp7_10p, sim10p_sp8 = biomass_rc_sp8_10p,
            sim20p_sp0 = biomass_rc_sp0_20p, sim20p_sp1 = biomass_rc_sp1_20p, sim20p_sp2 = biomass_rc_sp2_20p, sim20p_sp3 = biomass_rc_sp3_20p, sim20p_sp4 = biomass_rc_sp4_20p, sim20p_sp5 = biomass_rc_sp5_20p, sim20p_sp6 = biomass_rc_sp6_20p, sim20p_sp7 = biomass_rc_sp7_20p, sim20p_sp8 = biomass_rc_sp8_20p,
            sim30p_sp0 = biomass_rc_sp0_30p, sim30p_sp1 = biomass_rc_sp1_30p, sim30p_sp2 = biomass_rc_sp2_30p, sim30p_sp3 = biomass_rc_sp3_30p, sim30p_sp4 = biomass_rc_sp4_30p, sim30p_sp5 = biomass_rc_sp5_30p, sim30p_sp6 = biomass_rc_sp6_30p, sim30p_sp7 = biomass_rc_sp7_30p, sim30p_sp8 = biomass_rc_sp8_30p,
-           sp = 9, titlePlot = "UNCERTAINTY ON EUPHAUSIIDS"   , lim = c(-70,70),   col = coloursBox[1], lwd = 2, speciesName = speciesComplete)
+           sp = 9, titlePlot = "UNCERTAINTY ON EUPHAUSIIDS"   , lim = c(-120,120),   col = coloursBox[1], lwd = 2, speciesName = speciesComplete)
 
 mtext(text = "RELATIVE CHANGE IN BIOMASS" , side = 1, cex = 1.5  , line = 1.2, adj = 0.5, outer = TRUE)
 
-par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
-plot(0, 0, type = "n", bty = "n", xaxt = "n", yaxt = "n", cex = 0.8)
+#par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
+plot.new()
 
-legend("bottomright", legend = c("SCENARIO 10%", "SCENARIO 20%", "SCENATIO 30%"), bty = "n",
+legend("bottomright", legend = c("SCENARIO 10%", "SCENARIO 20%", "SCENARIO 30%"), bty = "n",
        fill = c("white", "gray77", "gray30"), border = "black", cex = 1, xpd = TRUE)
 
 dev.off()
@@ -253,9 +253,9 @@ figure1_cv = function(sim10p_sp0, sim10p_sp1, sim10p_sp2, sim10p_sp3, sim10p_sp4
   
   if(is.null(xlim)){xlim = c(-100,100)} else { xlim = xlim }
   
-  distance = (18:1) + 0.15*c(-1,1)
+  distance = (27:1) + 0.17*c(-0.7,0,0.7)
   
-  plot(1, type="n", xlab="", ylab="", xlim = xlim, ylim = c(0.5,18.5), axes = FALSE)
+  plot(1, type="n", xlab="", ylab="", xlim = xlim, ylim = c(0.5,28.5), axes = FALSE)
   abline(v = 0, col = "red", lty = 2)
   
   abline(v = 10, col = "blue", lty = 3, lwd = 0.8)
@@ -265,9 +265,9 @@ figure1_cv = function(sim10p_sp0, sim10p_sp1, sim10p_sp2, sim10p_sp3, sim10p_sp4
   box(...)
   
   if(isTRUE(axis2)){
-    axis(2, at = seq(from = 1.5, by = 2, length.out = 9), labels = speciesName, cex.axis = 0.7, las = 2)
+    axis(2, at = seq(from = 2, by = 3, length.out = 9), labels = speciesName, cex.axis = 0.7, las = 2)
   } else {
-    axis(2, at = seq(from = 1.5, by = 2, length.out = 9), labels = FALSE)
+    axis(2, at = seq(from = 2, by = 3, length.out = 9), labels = FALSE)
   }
   
   if(isTRUE(axis1)){
@@ -279,31 +279,31 @@ figure1_cv = function(sim10p_sp0, sim10p_sp1, sim10p_sp2, sim10p_sp3, sim10p_sp4
   #segments
   segments(0, distance[1 ], sim10p_sp0[sp], distance[1 ], col = "black", lty = 2)
   segments(0, distance[2 ], sim20p_sp0[sp], distance[2 ], col = "black", lty = 2)
-  segments(0, distance[3 ], sim20p_sp0[sp], distance[3 ], col = "black", lty = 2)
+  segments(0, distance[3 ], sim30p_sp0[sp], distance[3 ], col = "black", lty = 2)
   segments(0, distance[4 ], sim10p_sp1[sp], distance[4 ], col = "black", lty = 2)
   segments(0, distance[5 ], sim20p_sp1[sp], distance[5 ], col = "black", lty = 2)
-  segments(0, distance[6 ], sim20p_sp1[sp], distance[6 ], col = "black", lty = 2)
+  segments(0, distance[6 ], sim30p_sp1[sp], distance[6 ], col = "black", lty = 2)
   segments(0, distance[7 ], sim10p_sp2[sp], distance[7 ], col = "black", lty = 2)
   segments(0, distance[8 ], sim20p_sp2[sp], distance[8 ], col = "black", lty = 2)
-  segments(0, distance[9 ], sim20p_sp2[sp], distance[9 ], col = "black", lty = 2)
+  segments(0, distance[9 ], sim30p_sp2[sp], distance[9 ], col = "black", lty = 2)
   segments(0, distance[10], sim10p_sp3[sp], distance[10], col = "black", lty = 2)
   segments(0, distance[11], sim20p_sp3[sp], distance[11], col = "black", lty = 2)
-  segments(0, distance[12], sim20p_sp3[sp], distance[12], col = "black", lty = 2)
+  segments(0, distance[12], sim30p_sp3[sp], distance[12], col = "black", lty = 2)
   segments(0, distance[13], sim10p_sp4[sp], distance[13], col = "black", lty = 2)
   segments(0, distance[14], sim20p_sp4[sp], distance[14], col = "black", lty = 2)
-  segments(0, distance[15], sim20p_sp4[sp], distance[15], col = "black", lty = 2)
+  segments(0, distance[15], sim30p_sp4[sp], distance[15], col = "black", lty = 2)
   segments(0, distance[16], sim10p_sp5[sp], distance[16], col = "black", lty = 2)
   segments(0, distance[17], sim20p_sp5[sp], distance[17], col = "black", lty = 2)
-  segments(0, distance[18], sim20p_sp5[sp], distance[18], col = "black", lty = 2)
+  segments(0, distance[18], sim30p_sp5[sp], distance[18], col = "black", lty = 2)
   segments(0, distance[19], sim10p_sp6[sp], distance[19], col = "black", lty = 2)
   segments(0, distance[20], sim20p_sp6[sp], distance[20], col = "black", lty = 2)
-  segments(0, distance[21], sim20p_sp6[sp], distance[21], col = "black", lty = 2)
+  segments(0, distance[21], sim30p_sp6[sp], distance[21], col = "black", lty = 2)
   segments(0, distance[22], sim10p_sp7[sp], distance[22], col = "black", lty = 2)
   segments(0, distance[23], sim20p_sp7[sp], distance[23], col = "black", lty = 2)
-  segments(0, distance[24], sim20p_sp7[sp], distance[24], col = "black", lty = 2)
+  segments(0, distance[24], sim30p_sp7[sp], distance[24], col = "black", lty = 2)
   segments(0, distance[25], sim10p_sp8[sp], distance[25], col = "black", lty = 2)
   segments(0, distance[26], sim20p_sp8[sp], distance[26], col = "black", lty = 2)
-  segments(0, distance[27], sim20p_sp8[sp], distance[27], col = "black", lty = 2)
+  segments(0, distance[27], sim30p_sp8[sp], distance[27], col = "black", lty = 2)
   
   points(x = sim10p_sp0[sp], y = distance[1 ], type = "p", pch = 21, lwd = 0.9, cex = cex.point, bg = "white" , col = "black")
   points(x = sim20p_sp0[sp], y = distance[2 ], type = "p", pch = 21, lwd = 0.9, cex = cex.point, bg = "gray77", col = "black")
@@ -337,29 +337,29 @@ figure1_cv = function(sim10p_sp0, sim10p_sp1, sim10p_sp2, sim10p_sp3, sim10p_sp4
   
 }
 
-png(filename = "indicators/plots/figures_chapter/1.figure1B.png", width = 1200, height = 900, pointsize = 16)
+png(filename = "paper_results/plots/1.figure1B.png", width = 1200, height = 900, pointsize = 16)
 par(mfrow = c(3, 3))
 par(cex   = 1)
 par(mar   = c(2.5,2.5,1,0), oma = c(3,4,1,0.5))
 figure1_cv(sim10p_sp0 = biomass_cv_sp0_10p, sim10p_sp1 = biomass_cv_sp1_10p, sim10p_sp2 = biomass_cv_sp2_10p, sim10p_sp3 = biomass_cv_sp3_10p, sim10p_sp4 = biomass_cv_sp4_10p, sim10p_sp5 = biomass_cv_sp5_10p, sim10p_sp6 = biomass_cv_sp6_10p, sim10p_sp7 = biomass_cv_sp7_10p, sim10p_sp8 = biomass_cv_sp8_10p,
            sim20p_sp0 = biomass_cv_sp0_20p, sim20p_sp1 = biomass_cv_sp1_20p, sim20p_sp2 = biomass_cv_sp2_20p, sim20p_sp3 = biomass_cv_sp3_20p, sim20p_sp4 = biomass_cv_sp4_20p, sim20p_sp5 = biomass_cv_sp5_20p, sim20p_sp6 = biomass_cv_sp6_20p, sim20p_sp7 = biomass_cv_sp7_20p, sim20p_sp8 = biomass_cv_sp8_20p,
            sim30p_sp0 = biomass_cv_sp0_30p, sim30p_sp1 = biomass_cv_sp1_30p, sim30p_sp2 = biomass_cv_sp2_30p, sim30p_sp3 = biomass_cv_sp3_30p, sim30p_sp4 = biomass_cv_sp4_30p, sim30p_sp5 = biomass_cv_sp5_30p, sim30p_sp6 = biomass_cv_sp6_30p, sim30p_sp7 = biomass_cv_sp7_30p, sim30p_sp8 = biomass_cv_sp8_30p,
-           sp = 1, titlePlot = "UNCERTAINTY ON ANCHOVY"       , xlim = c(-0.1,80), lwd = 2, speciesName = speciesComplete)
+           sp = 1, titlePlot = "UNCERTAINTY ON ANCHOVY"       , xlim = c(-0.1,100), lwd = 2, speciesName = speciesComplete)
 
 figure1_cv(sim10p_sp0 = biomass_cv_sp0_10p, sim10p_sp1 = biomass_cv_sp1_10p, sim10p_sp2 = biomass_cv_sp2_10p, sim10p_sp3 = biomass_cv_sp3_10p, sim10p_sp4 = biomass_cv_sp4_10p, sim10p_sp5 = biomass_cv_sp5_10p, sim10p_sp6 = biomass_cv_sp6_10p, sim10p_sp7 = biomass_cv_sp7_10p, sim10p_sp8 = biomass_cv_sp8_10p,
            sim20p_sp0 = biomass_cv_sp0_20p, sim20p_sp1 = biomass_cv_sp1_20p, sim20p_sp2 = biomass_cv_sp2_20p, sim20p_sp3 = biomass_cv_sp3_20p, sim20p_sp4 = biomass_cv_sp4_20p, sim20p_sp5 = biomass_cv_sp5_20p, sim20p_sp6 = biomass_cv_sp6_20p, sim20p_sp7 = biomass_cv_sp7_20p, sim20p_sp8 = biomass_cv_sp8_20p,
            sim30p_sp0 = biomass_cv_sp0_30p, sim30p_sp1 = biomass_cv_sp1_30p, sim30p_sp2 = biomass_cv_sp2_30p, sim30p_sp3 = biomass_cv_sp3_30p, sim30p_sp4 = biomass_cv_sp4_30p, sim30p_sp5 = biomass_cv_sp5_30p, sim30p_sp6 = biomass_cv_sp6_30p, sim30p_sp7 = biomass_cv_sp7_30p, sim30p_sp8 = biomass_cv_sp8_30p,
-           sp = 2, titlePlot = "UNCERTAINTY ON HAKE"          , xlim = c(-0.1,110), lwd = 2, speciesName = speciesAbbre)
+           sp = 2, titlePlot = "UNCERTAINTY ON HAKE"          , xlim = c(-0.1,250), lwd = 2, speciesName = speciesAbbre)
 
 figure1_cv(sim10p_sp0 = biomass_cv_sp0_10p, sim10p_sp1 = biomass_cv_sp1_10p, sim10p_sp2 = biomass_cv_sp2_10p, sim10p_sp3 = biomass_cv_sp3_10p, sim10p_sp4 = biomass_cv_sp4_10p, sim10p_sp5 = biomass_cv_sp5_10p, sim10p_sp6 = biomass_cv_sp6_10p, sim10p_sp7 = biomass_cv_sp7_10p, sim10p_sp8 = biomass_cv_sp8_10p,
            sim20p_sp0 = biomass_cv_sp0_20p, sim20p_sp1 = biomass_cv_sp1_20p, sim20p_sp2 = biomass_cv_sp2_20p, sim20p_sp3 = biomass_cv_sp3_20p, sim20p_sp4 = biomass_cv_sp4_20p, sim20p_sp5 = biomass_cv_sp5_20p, sim20p_sp6 = biomass_cv_sp6_20p, sim20p_sp7 = biomass_cv_sp7_20p, sim20p_sp8 = biomass_cv_sp8_20p,
            sim30p_sp0 = biomass_cv_sp0_30p, sim30p_sp1 = biomass_cv_sp1_30p, sim30p_sp2 = biomass_cv_sp2_30p, sim30p_sp3 = biomass_cv_sp3_30p, sim30p_sp4 = biomass_cv_sp4_30p, sim30p_sp5 = biomass_cv_sp5_30p, sim30p_sp6 = biomass_cv_sp6_30p, sim30p_sp7 = biomass_cv_sp7_30p, sim30p_sp8 = biomass_cv_sp8_30p,
-           sp = 3, titlePlot = "UNCERTAINTY ON SARDINE"       , xlim = c(-0.1,220), lwd = 2, speciesName = speciesAbbre)
+           sp = 3, titlePlot = "UNCERTAINTY ON SARDINE"       , xlim = c(-0.1,120), lwd = 2, speciesName = speciesAbbre)
 
 figure1_cv(sim10p_sp0 = biomass_cv_sp0_10p, sim10p_sp1 = biomass_cv_sp1_10p, sim10p_sp2 = biomass_cv_sp2_10p, sim10p_sp3 = biomass_cv_sp3_10p, sim10p_sp4 = biomass_cv_sp4_10p, sim10p_sp5 = biomass_cv_sp5_10p, sim10p_sp6 = biomass_cv_sp6_10p, sim10p_sp7 = biomass_cv_sp7_10p, sim10p_sp8 = biomass_cv_sp8_10p,
            sim20p_sp0 = biomass_cv_sp0_20p, sim20p_sp1 = biomass_cv_sp1_20p, sim20p_sp2 = biomass_cv_sp2_20p, sim20p_sp3 = biomass_cv_sp3_20p, sim20p_sp4 = biomass_cv_sp4_20p, sim20p_sp5 = biomass_cv_sp5_20p, sim20p_sp6 = biomass_cv_sp6_20p, sim20p_sp7 = biomass_cv_sp7_20p, sim20p_sp8 = biomass_cv_sp8_20p,
            sim30p_sp0 = biomass_cv_sp0_30p, sim30p_sp1 = biomass_cv_sp1_30p, sim30p_sp2 = biomass_cv_sp2_30p, sim30p_sp3 = biomass_cv_sp3_30p, sim30p_sp4 = biomass_cv_sp4_30p, sim30p_sp5 = biomass_cv_sp5_30p, sim30p_sp6 = biomass_cv_sp6_30p, sim30p_sp7 = biomass_cv_sp7_30p, sim30p_sp8 = biomass_cv_sp8_30p,
-           sp = 4, titlePlot = "UNCERTAINTY ON JACK MACKEREL" , xlim = c(-0.1,80), lwd = 2, speciesName = speciesComplete)
+           sp = 4, titlePlot = "UNCERTAINTY ON JACK MACKEREL" , xlim = c(-0.1,100), lwd = 2, speciesName = speciesComplete)
 
 figure1_cv(sim10p_sp0 = biomass_cv_sp0_10p, sim10p_sp1 = biomass_cv_sp1_10p, sim10p_sp2 = biomass_cv_sp2_10p, sim10p_sp3 = biomass_cv_sp3_10p, sim10p_sp4 = biomass_cv_sp4_10p, sim10p_sp5 = biomass_cv_sp5_10p, sim10p_sp6 = biomass_cv_sp6_10p, sim10p_sp7 = biomass_cv_sp7_10p, sim10p_sp8 = biomass_cv_sp8_10p,
            sim20p_sp0 = biomass_cv_sp0_20p, sim20p_sp1 = biomass_cv_sp1_20p, sim20p_sp2 = biomass_cv_sp2_20p, sim20p_sp3 = biomass_cv_sp3_20p, sim20p_sp4 = biomass_cv_sp4_20p, sim20p_sp5 = biomass_cv_sp5_20p, sim20p_sp6 = biomass_cv_sp6_20p, sim20p_sp7 = biomass_cv_sp7_20p, sim20p_sp8 = biomass_cv_sp8_20p,
@@ -369,7 +369,7 @@ figure1_cv(sim10p_sp0 = biomass_cv_sp0_10p, sim10p_sp1 = biomass_cv_sp1_10p, sim
 figure1_cv(sim10p_sp0 = biomass_cv_sp0_10p, sim10p_sp1 = biomass_cv_sp1_10p, sim10p_sp2 = biomass_cv_sp2_10p, sim10p_sp3 = biomass_cv_sp3_10p, sim10p_sp4 = biomass_cv_sp4_10p, sim10p_sp5 = biomass_cv_sp5_10p, sim10p_sp6 = biomass_cv_sp6_10p, sim10p_sp7 = biomass_cv_sp7_10p, sim10p_sp8 = biomass_cv_sp8_10p,
            sim20p_sp0 = biomass_cv_sp0_20p, sim20p_sp1 = biomass_cv_sp1_20p, sim20p_sp2 = biomass_cv_sp2_20p, sim20p_sp3 = biomass_cv_sp3_20p, sim20p_sp4 = biomass_cv_sp4_20p, sim20p_sp5 = biomass_cv_sp5_20p, sim20p_sp6 = biomass_cv_sp6_20p, sim20p_sp7 = biomass_cv_sp7_20p, sim20p_sp8 = biomass_cv_sp8_20p,
            sim30p_sp0 = biomass_cv_sp0_30p, sim30p_sp1 = biomass_cv_sp1_30p, sim30p_sp2 = biomass_cv_sp2_30p, sim30p_sp3 = biomass_cv_sp3_30p, sim30p_sp4 = biomass_cv_sp4_30p, sim30p_sp5 = biomass_cv_sp5_30p, sim30p_sp6 = biomass_cv_sp6_30p, sim30p_sp7 = biomass_cv_sp7_30p, sim30p_sp8 = biomass_cv_sp8_30p,
-           sp = 6, titlePlot = "UNCERTAINTY ON MESOPELAGICS"  , xlim = c(-0.1,80), lwd = 2, speciesName = speciesAbbre)
+           sp = 6, titlePlot = "UNCERTAINTY ON MESOPELAGICS"  , xlim = c(-0.1,100), lwd = 2, speciesName = speciesAbbre)
 
 figure1_cv(sim10p_sp0 = biomass_cv_sp0_10p, sim10p_sp1 = biomass_cv_sp1_10p, sim10p_sp2 = biomass_cv_sp2_10p, sim10p_sp3 = biomass_cv_sp3_10p, sim10p_sp4 = biomass_cv_sp4_10p, sim10p_sp5 = biomass_cv_sp5_10p, sim10p_sp6 = biomass_cv_sp6_10p, sim10p_sp7 = biomass_cv_sp7_10p, sim10p_sp8 = biomass_cv_sp8_10p,
            sim20p_sp0 = biomass_cv_sp0_20p, sim20p_sp1 = biomass_cv_sp1_20p, sim20p_sp2 = biomass_cv_sp2_20p, sim20p_sp3 = biomass_cv_sp3_20p, sim20p_sp4 = biomass_cv_sp4_20p, sim20p_sp5 = biomass_cv_sp5_20p, sim20p_sp6 = biomass_cv_sp6_20p, sim20p_sp7 = biomass_cv_sp7_20p, sim20p_sp8 = biomass_cv_sp8_20p,
@@ -384,7 +384,7 @@ figure1_cv(sim10p_sp0 = biomass_cv_sp0_10p, sim10p_sp1 = biomass_cv_sp1_10p, sim
 figure1_cv(sim10p_sp0 = biomass_cv_sp0_10p, sim10p_sp1 = biomass_cv_sp1_10p, sim10p_sp2 = biomass_cv_sp2_10p, sim10p_sp3 = biomass_cv_sp3_10p, sim10p_sp4 = biomass_cv_sp4_10p, sim10p_sp5 = biomass_cv_sp5_10p, sim10p_sp6 = biomass_cv_sp6_10p, sim10p_sp7 = biomass_cv_sp7_10p, sim10p_sp8 = biomass_cv_sp8_10p,
            sim20p_sp0 = biomass_cv_sp0_20p, sim20p_sp1 = biomass_cv_sp1_20p, sim20p_sp2 = biomass_cv_sp2_20p, sim20p_sp3 = biomass_cv_sp3_20p, sim20p_sp4 = biomass_cv_sp4_20p, sim20p_sp5 = biomass_cv_sp5_20p, sim20p_sp6 = biomass_cv_sp6_20p, sim20p_sp7 = biomass_cv_sp7_20p, sim20p_sp8 = biomass_cv_sp8_20p,
            sim30p_sp0 = biomass_cv_sp0_30p, sim30p_sp1 = biomass_cv_sp1_30p, sim30p_sp2 = biomass_cv_sp2_30p, sim30p_sp3 = biomass_cv_sp3_30p, sim30p_sp4 = biomass_cv_sp4_30p, sim30p_sp5 = biomass_cv_sp5_30p, sim30p_sp6 = biomass_cv_sp6_30p, sim30p_sp7 = biomass_cv_sp7_30p, sim30p_sp8 = biomass_cv_sp8_30p,
-           sp = 9, titlePlot = "UNCERTAINTY ON EUPHAUSIIDS"   , xlim = c(-0.1,30), lwd = 2, speciesName = speciesAbbre)
+           sp = 9, titlePlot = "UNCERTAINTY ON EUPHAUSIIDS"   , xlim = c(-0.1,300), lwd = 2, speciesName = speciesAbbre)
 
 mtext(text = "COEFFICIENT OF VARIATION OF BIOMASS" , side = 1, cex = 1.5  , line = 1.2, adj = 0.5, outer = TRUE)
 
@@ -392,7 +392,7 @@ par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
 plot(0, 0, type = "n", bty = "n", xaxt = "n", yaxt = "n", cex = 0.8)
 
 legend("bottomright", legend = c("SCENARIO 10%", "SCENARIO 20%", "SCENARIO 30%"), bty = "n",
-       fill = c("white", "gray77", "gray30"), border = "black", cex = 1, xpd = TRUE)
+       fill = c("white", "gray77", "gray30"), border = "black", cex = 0.9, xpd = TRUE)
 
 
 dev.off()
