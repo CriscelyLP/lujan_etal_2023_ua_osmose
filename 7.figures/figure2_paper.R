@@ -110,7 +110,7 @@ figure2_rc = function(sim10p_sp0, sim10p_sp1, sim10p_sp2, sim10p_sp3, sim10p_sp4
   
   distance = (27:1) + 0.17*c(-0.7, 0, 0.7)
   
-  boxplot(toPlot_sim10p_sp0*100, at = distance[1] , outline = FALSE, axes = FALSE, ylim = lim, col = "white", xlim = c(0.5,28.5), horizontal = TRUE)
+  boxplot(toPlot_sim10p_sp0*100, at = distance[1] , outline = FALSE, axes = FALSE, ylim = lim, col = "white", xlim = c(0.5,27.5), horizontal = TRUE)
   boxplot(toPlot_sim20p_sp0*100, at = distance[2] , outline = FALSE, axes = FALSE, add = TRUE, col = "gray77", horizontal = TRUE)
   boxplot(toPlot_sim30p_sp0*100, at = distance[3] , outline = FALSE, axes = FALSE, add = TRUE, col = "gray30", horizontal = TRUE)
   
@@ -295,16 +295,16 @@ figure2_cv = function(sim10p_sp0, sim10p_sp1, sim10p_sp2, sim10p_sp3, sim10p_sp4
   box(...)
   
   if(isTRUE(axis2)){
-    axis(2, at = seq(from = 2, by = 3, length.out = 9), labels = speciesName, cex.axis = 0.7, las = 2)
+    axis(2, at = seq(from = 2, by = 3, length.out = 9), labels = speciesName, cex.axis = 0.8, las = 2)
   } else {
-    axis(2, at = seq(from = 2, by = 3, length.out = 9), labels = FALSE)
+    axis(2, at = seq(from = 2, by = 3, length.out = 9), labels = FALSE, cex.axis = 0.9)
   }
   
   if(isTRUE(axis1)){
     axis1Default = axTicks(1)
     axis(1, at = axis1Default, labels = paste0(axis1Default, "%"))} 
   
-  mtext(text = titlePlot, side = 3,cex = 0.7, adj = 0.05)
+  mtext(text = titlePlot, side = 3,cex = 0.9, adj = 0.05)
   
   #segments
   segments(0, distance[1 ], toPlot_sim10p_sp0, distance[1 ], col = "black", lty = 2)
@@ -378,7 +378,7 @@ coloursBox  = c("black", "blue", "green4", "blueviolet", "coral")
 png(filename = "paper_results/plots/2.figure2B.png", width = 1200, height = 1000, pointsize = 16)
 par(mfrow = c(3, 3))
 par(cex   = 1)
-par(mar   = c(2.5,2.5,1.2,0), oma = c(3,4,1,0.5))
+par(mar   = c(2.2,2.5,1.2,0), oma = c(3,5,1,0.5))
 
 figure2_cv(sim10p_sp0, sim10p_sp1, sim10p_sp2, sim10p_sp3, sim10p_sp4, sim10p_sp5, sim10p_sp6, sim10p_sp7, sim10p_sp8,
            sim20p_sp0, sim20p_sp1, sim20p_sp2, sim20p_sp3, sim20p_sp4, sim20p_sp5, sim20p_sp6, sim20p_sp7, sim20p_sp8,
@@ -390,7 +390,7 @@ figure2_cv(sim10p_sp0, sim10p_sp1, sim10p_sp2, sim10p_sp3, sim10p_sp4, sim10p_sp
            sim20p_sp0, sim20p_sp1, sim20p_sp2, sim20p_sp3, sim20p_sp4, sim20p_sp5, sim20p_sp6, sim20p_sp7, sim20p_sp8,
            sim30p_sp0, sim30p_sp1, sim30p_sp2, sim30p_sp3, sim30p_sp4, sim30p_sp5, sim30p_sp6, sim30p_sp7, sim30p_sp8,
            ind = "coefficientVariation", var = "mti", titlePlot = "UNCERTAINTY ON MARINE TROPHIC INDEX" ,
-           xlim = c(0,3)         , col = coloursBox[1], lwd = 2, speciesName = speciesAbbre)
+           xlim = c(0,5)         , col = coloursBox[1], lwd = 2, speciesName = speciesAbbre)
 
 figure2_cv(sim10p_sp0, sim10p_sp1, sim10p_sp2, sim10p_sp3, sim10p_sp4, sim10p_sp5, sim10p_sp6, sim10p_sp7, sim10p_sp8,
            sim20p_sp0, sim20p_sp1, sim20p_sp2, sim20p_sp3, sim20p_sp4, sim20p_sp5, sim20p_sp6, sim20p_sp7, sim20p_sp8,
@@ -434,13 +434,13 @@ figure2_cv(sim10p_sp0, sim10p_sp1, sim10p_sp2, sim10p_sp3, sim10p_sp4, sim10p_sp
            ind = "coefficientVariation", var = "lfi40", titlePlot = "UNCERTAINTY ON LFI40" ,
            xlim = c(0,100)           , col = coloursBox[1], lwd = 2, speciesName = speciesAbbre)
 
-mtext(text = "COEFFICIENT OF VARIATION (%)" , side = 1, cex = 1.5  , line = 1.2, adj = 0.5, outer = TRUE)
+mtext(text = "COEFFICIENT OF VARIATION (%)" , side = 1, cex = 1.5  , line = 1.5, adj = 0.5, outer = TRUE)
 
 par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
 plot(0, 0, type = "n", bty = "n", xaxt = "n", yaxt = "n", cex = 0.8)
 
 legend("bottomright", legend = c("SCENARIO 10%", "SCENARIO 20%", "SCENARIO 30%"), bty = "n",
-       fill = c("white", "gray77", "gray30"), border = "black", cex = 1, xpd = TRUE)
+       fill = c("white", "gray77", "gray30"), border = "black", cex = 0.9, xpd = TRUE)
 
 
 dev.off()
