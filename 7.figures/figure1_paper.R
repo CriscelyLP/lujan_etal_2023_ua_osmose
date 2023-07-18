@@ -84,7 +84,7 @@ figure1_rc = function(sim10p_sp0, sim10p_sp1, sim10p_sp2, sim10p_sp3, sim10p_sp4
   
   distance = (27:1) + 0.17*c(-0.7, 0, 0.7)
   
-  boxplot(sim10p_sp0[,sp]*100, at = distance[1] , outline = FALSE, axes = FALSE, ylim = lim, col = "white" , xlim = c(0.5,28.5), horizontal = TRUE, width = 1.5)
+  boxplot(sim10p_sp0[,sp]*100, at = distance[1] , outline = FALSE, axes = FALSE, ylim = lim, col = "white" , xlim = c(0.5,27.5), horizontal = TRUE, width = 1.5)
   boxplot(sim20p_sp0[,sp]*100, at = distance[2] , outline = FALSE, axes = FALSE, add = TRUE, col = "gray77", horizontal = TRUE, width = 1.5)
   boxplot(sim30p_sp0[,sp]*100, at = distance[3] , outline = FALSE, axes = FALSE, add = TRUE, col = "gray30", horizontal = TRUE, width = 1.5)
   
@@ -149,7 +149,7 @@ coloursBox       = c("black", "blue", "green4", "blueviolet", "coral")
 png(filename = "paper_results/plots/1.figure1A.png", width = 1400, height = 2000, pointsize = 25)
 par(mfrow = c(5, 2))
 par(cex   = 1)
-par(mar   = c(3.5,3.5,1,0), oma = c(4,4,1,0.8))
+par(mar   = c(2.5,3.5,1,0), oma = c(4,4,1,0.8))
 figure1_rc(sim10p_sp0 = biomass_rc_sp0_10p, sim10p_sp1 = biomass_rc_sp1_10p, sim10p_sp2 = biomass_rc_sp2_10p, sim10p_sp3 = biomass_rc_sp3_10p, sim10p_sp4 = biomass_rc_sp4_10p, sim10p_sp5 = biomass_rc_sp5_10p, sim10p_sp6 = biomass_rc_sp6_10p, sim10p_sp7 = biomass_rc_sp7_10p, sim10p_sp8 = biomass_rc_sp8_10p,
            sim20p_sp0 = biomass_rc_sp0_20p, sim20p_sp1 = biomass_rc_sp1_20p, sim20p_sp2 = biomass_rc_sp2_20p, sim20p_sp3 = biomass_rc_sp3_20p, sim20p_sp4 = biomass_rc_sp4_20p, sim20p_sp5 = biomass_rc_sp5_20p, sim20p_sp6 = biomass_rc_sp6_20p, sim20p_sp7 = biomass_rc_sp7_20p, sim20p_sp8 = biomass_rc_sp8_20p,
            sim30p_sp0 = biomass_rc_sp0_30p, sim30p_sp1 = biomass_rc_sp1_30p, sim30p_sp2 = biomass_rc_sp2_30p, sim30p_sp3 = biomass_rc_sp3_30p, sim30p_sp4 = biomass_rc_sp4_30p, sim30p_sp5 = biomass_rc_sp5_30p, sim30p_sp6 = biomass_rc_sp6_30p, sim30p_sp7 = biomass_rc_sp7_30p, sim30p_sp8 = biomass_rc_sp8_30p,
@@ -255,7 +255,7 @@ figure1_cv = function(sim10p_sp0, sim10p_sp1, sim10p_sp2, sim10p_sp3, sim10p_sp4
   
   distance = (27:1) + 0.17*c(-0.7,0,0.7)
   
-  plot(1, type="n", xlab="", ylab="", xlim = xlim, ylim = c(0.5,28.5), axes = FALSE)
+  plot(1, type="n", xlab="", ylab="", xlim = xlim, ylim = c(0.5,27.5), axes = FALSE)
   abline(v = 0, col = "red", lty = 2)
   
   abline(v = 10, col = "blue", lty = 3, lwd = 0.8)
