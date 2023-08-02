@@ -1,9 +1,12 @@
 cff-version: 1.0.0
-message: "If you use this software, please cite it as below."
+message: "This code is related to the following article. If you use this software, please cite it as below."
 authors:
   - family-names: Criscely
     given-names: Luján
     orcid: https://orcid.org/0000-0003-2658-7340
+  - family-names: Ricardo
+    given-names: Oliveros-Ramos
+    orcid: https://orcid.org/0000-0002-8069-2101
 title: "Key species and indicators revealed by an uncertainty analysis of the marine ecosystem model OSMOSE"
 version: 1.0.0
 doi: 10.5281/zenodo.8208845
